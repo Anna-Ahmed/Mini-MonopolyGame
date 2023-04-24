@@ -1,5 +1,8 @@
 package com.cm6123.monopoly.app;
 
+import com.cm6123.monopoly.dice.Dice;
+import com.cm6123.monopoly.game.MonopolyBoard;
+import com.cm6123.monopoly.game.Player;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,6 +29,16 @@ public final class Application {
         logger.info("Application Started with args:{}", String.join(",", args));
 
         System.out.println("Hello. Welcome to Monopoly.");
+
+
+        MonopolyBoard board = new MonopolyBoard();
+        Player player = new Player();
+        Dice dice = new Dice(6);
+        board.setDice(dice);
+
+        //board.play();
+        board.playTurn(player);
+
 
         logger.info("Application closing");
     }

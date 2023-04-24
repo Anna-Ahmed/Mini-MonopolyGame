@@ -3,4 +3,10 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="17" />
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="assessment-2023-starter-monopoly.main" options="--add-modules java.base" />
+      <module name="assessment-2023-starter-monopoly.test" options="--add-modules java.base" />
+    </option>
+  </component>
 </project>
