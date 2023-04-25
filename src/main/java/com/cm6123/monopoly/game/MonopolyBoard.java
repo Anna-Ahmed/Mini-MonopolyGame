@@ -44,7 +44,7 @@ public class MonopolyBoard {
         /**
          * Set of spaces definied as enums.
          */
-        GO, ROAD, OLD_KENT_ROAD, PALL_MALL, PADDIGTON, THE_STRAND,TAX_OFFICE, WATERLOO, LECISTER_SQUARE,PARK_LANE;
+        HOME, ROAD, OLD_KENT_ROAD, PALL_MALL, PADDIGTON, THE_STRAND,TAX_OFFICE, WATERLOO, LECISTER_SQUARE,PARK_LANE;
     }
 
 
@@ -55,7 +55,7 @@ public class MonopolyBoard {
         this.spaces = new BoardSpace[boardsize];
         for (int i = 0; i < boardsize; i++) { // looping through the boardsize
             if (i % 16 == 1) {   // assigning  positions to the board spaces on the board
-                spaces[i] = BoardSpace.GO;
+                spaces[i] = BoardSpace.HOME;
             } else if (i % 16 == 2 || i % 16 == 3 || i % 16 == 6 || i % 16 == 8 || i % 16 == 10 || i % 16 == 14) {
                 spaces[i] = BoardSpace.ROAD;
             } else if (i % 16 == 4) {
@@ -135,11 +135,21 @@ public class MonopolyBoard {
         player.setPlayerPosition(currentPosition);  // setting the players position to the current position on the board.
 
 
+
+
+
+
         BoardSpace currentSpace = spaces[currentPosition];
 
+
+
+
+
+
         switch (currentSpace) {
-            case GO:
-                System.out.println("You landed on GO");
+
+            case HOME:
+                System.out.println("You landed on Home");
                 break;
             case ROAD:
                 System.out.println(" You landed on Road");
@@ -174,8 +184,10 @@ public class MonopolyBoard {
                 break;
         }
 
+
         System.out.println("Player" + (currentPlayerIsPlayer1 ? " 1 " : " 2 ") + " now has  " + player.getPlayerBalance() + " as balance.");
         return player.getPlayerBalance() <= 0;
+
     }
 
 

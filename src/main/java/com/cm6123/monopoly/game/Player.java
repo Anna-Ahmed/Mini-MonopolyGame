@@ -3,6 +3,7 @@ package com.cm6123.monopoly.game;
 
 import com.cm6123.monopoly.dice.Dice;
 
+
 /**
  * Class created to represnt players in the game.
  */
@@ -21,7 +22,13 @@ public class Player {
     /**
      * @param playerBalance.
      */
-    private static int playerBalance;
+    private int playerBalance;
+
+    /**
+     @param board used to create a monopoly board object.
+     */
+
+    private MonopolyBoard board;
 
 
     /**
@@ -35,13 +42,12 @@ public class Player {
         dice = new Dice(6);
 
 
-
-
     }
     // Getter for playerPosition
 
     /**
      * Gets players position.
+     *
      * @return playerPosition
      */
     public int getPlayerPosition() {
@@ -51,15 +57,18 @@ public class Player {
 
     /**
      * Sets players position.
+     *
      * @param aPlayerPosition doesn't return param.
      */
-    public  void setPlayerPosition(final int aPlayerPosition){
+    public void setPlayerPosition(final int aPlayerPosition) {
         this.playerPosition = aPlayerPosition;
     }
 
     // Getter for players balance
+
     /**
      * Gets players Balance.
+     *
      * @return playerBalance.
      */
     public int getPlayerBalance() {
@@ -67,21 +76,29 @@ public class Player {
     }
 
     /**
-     * adds to players balance.
+     * Banker gives money  to player.
+     *
      * @param amount
      */
-    public static void addToPlayerBalancey(final int amount){
+    public void recieveMoneyFromBanker(final int amount) {
         playerBalance += amount;
+
+
     }
 
     /**
-     * Subtracts from players balance.
+     * Player gives money to banker.
+     *
      * @param amount
      */
-    public static void subtractFromPlayerBalance(final int amount){
+    public void payBanker(final int amount) {
         playerBalance -= amount;
+        Banker.recieveMoneyFromPlayer(amount);
     }
 
 
-}
+
+
+    }
+
 
