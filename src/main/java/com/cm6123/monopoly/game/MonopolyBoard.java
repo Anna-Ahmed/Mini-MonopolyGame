@@ -36,8 +36,6 @@ public class MonopolyBoard {
      * @param currentPlayerIsPlayer1 is inialziated as boolean for playerturns.
      */
     private boolean currentPlayerIsPlayer1;
-
-
     /**
      *  enum represting the spaces on the board.
      */
@@ -119,7 +117,6 @@ public class MonopolyBoard {
     public Player getPlayer1(){
         return player1;
     }
-
     /**
      * Method created for players to play their turn in the game.
      * @param player The Player object represnts the player.

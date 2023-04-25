@@ -33,6 +33,9 @@ public class TestDice extends Dice {
     public Integer roll() {
         int value = valuesOfRoll[index];
         index = (index + 1) % valuesOfRoll.length;
+        if (value > 6){   // the highest value on dice that can be rolled is 6 therfore if a value higher than 6 is inpute then the output will default to 6
+            value = 6;
+        }
         return value;
     }
 
