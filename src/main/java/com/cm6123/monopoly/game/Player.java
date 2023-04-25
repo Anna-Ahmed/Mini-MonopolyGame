@@ -30,6 +30,11 @@ public class Player {
 
     private MonopolyBoard board;
 
+    /**
+     * @paraam banker used to create banker object for Banker class.
+     */
+    private Banker banker;
+
 
     /**
      * Constructor created for player.
@@ -84,6 +89,7 @@ public class Player {
         playerBalance += amount;
 
 
+
     }
 
     /**
@@ -93,7 +99,7 @@ public class Player {
      */
     public void payBanker(final int amount) {
         playerBalance -= amount;
-        Banker.recieveMoneyFromPlayer(amount);
+        banker.recieveMoneyFromPlayer(amount);
     }
 
 

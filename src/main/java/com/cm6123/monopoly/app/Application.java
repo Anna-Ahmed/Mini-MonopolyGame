@@ -1,6 +1,7 @@
 package com.cm6123.monopoly.app;
 
 import com.cm6123.monopoly.dice.Dice;
+import com.cm6123.monopoly.game.Banker;
 import com.cm6123.monopoly.game.MonopolyBoard;
 import com.cm6123.monopoly.game.Player;
 import org.slf4j.Logger;
@@ -32,6 +33,7 @@ public final class Application {
 
 
         MonopolyBoard board = new MonopolyBoard();
+        Banker banker = new Banker();
         Player player = new Player();
         Dice dice = new Dice(6);
         board.setDice(dice);

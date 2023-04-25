@@ -31,6 +31,12 @@ public class MonopolyBoard {
      * @param player2  is used to create an object player2 of the Player class.
      */
     private Player player2;
+    /**
+     * @param banker is used to create a banker object for Banker class.
+     */
+
+    private  Banker banker;
+
 
     /**
      * @param currentPlayerIsPlayer1 is inialziated as boolean for playerturns.
@@ -145,11 +151,12 @@ public class MonopolyBoard {
 
 
 
-
         switch (currentSpace) {
 
             case HOME:
                 System.out.println("You landed on Home");
+                player.recieveMoneyFromBanker(200);
+
                 break;
             case ROAD:
                 System.out.println(" You landed on Road");
@@ -187,6 +194,8 @@ public class MonopolyBoard {
 
         System.out.println("Player" + (currentPlayerIsPlayer1 ? " 1 " : " 2 ") + " now has  " + player.getPlayerBalance() + " as balance.");
         return player.getPlayerBalance() <= 0;
+
+
 
     }
 

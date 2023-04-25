@@ -7,7 +7,7 @@ public class Banker {
     /**
      *@param bankerbalance is the amount banker has.
      */
-    private int bankerbalance = 50000;
+    private int bankerbalance;
 
     /**
      * @param player used to create a Player object.
@@ -16,12 +16,23 @@ public class Banker {
     private Player player;
     /**
      * Constructor.
-     * @param thebankerbalance
+     *  bankerbalance is set to 5000.
      */
 
-    public Banker(final int thebankerbalance){
-        this.bankerbalance = thebankerbalance;
+    public Banker(){
+
+        bankerbalance = 5000;
+
     }
+
+    /**
+     * Gets the bankers balance.
+     * @return bankerbalance
+     */
+    public  int getBankerBalance() {
+        return bankerbalance;
+    }
+
 
     /**
      * Method for banker to pay player.
@@ -29,7 +40,11 @@ public class Banker {
      * @param amount amount is not a fixed value.
      */
 
+
+
+
     public void payPlayer(final Player aplayer,final int amount){
+        bankerbalance -= amount;
         System.out.println("Player given" + amount);
         aplayer.recieveMoneyFromBanker(amount);
 
@@ -40,8 +55,10 @@ public class Banker {
      * @param amount
      */
 
-    public static void recieveMoneyFromPlayer(final int amount){
+    public void recieveMoneyFromPlayer(final int amount){
+        bankerbalance += amount;
 
         System.out.println("Received" + amount + "From Player");
+        player.payBanker(amount);
     }
 }

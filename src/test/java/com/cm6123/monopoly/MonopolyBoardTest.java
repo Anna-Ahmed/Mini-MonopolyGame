@@ -1,6 +1,7 @@
 package com.cm6123.monopoly;
 
 import com.cm6123.monopoly.dice.TestDice;
+import com.cm6123.monopoly.game.Banker;
 import com.cm6123.monopoly.game.MonopolyBoard;
 import com.cm6123.monopoly.game.Player;
 import org.junit.jupiter.api.Test;
@@ -83,6 +84,39 @@ public class MonopolyBoardTest {
 
         );
     }
+
+// Test to check if player gets 200 when they land on go.
+    @Test
+    public void PlayerRecieveMoneyOnHomeSpace() {
+
+        MonopolyBoard board = new MonopolyBoard();
+        Player player = board.getPlayer1();
+
+
+        //Given players postion is 11 on the board
+        player.setPlayerPosition(11);
+
+
+        //When dice is rolled and player is on Home
+        TestDice mockdice = new TestDice(new int[]{3, 3});
+        board.setDice(mockdice);
+        int currentPlayerBalance = player.getPlayerBalance();
+        board.playTurn(player);
+        int expectedPlayerBalance = currentPlayerBalance + 200;
+
+        //Then player should recieve 200 and bankers balance should - 200
+
+        assertEquals(expectedPlayerBalance, player.getPlayerBalance());
+
+
+
+    }
+
+
+
+
+
+
 
 
 
