@@ -3,6 +3,8 @@ package com.cm6123.monopoly.game;
 
 import com.cm6123.monopoly.dice.Dice;
 
+//import java.util.Scanner;
+
 
 /**
  * A class reprenting a Monopoly Board.
@@ -35,8 +37,8 @@ public class MonopolyBoard {
      * @param banker is used to create a banker object for Banker class.
      */
 
-    private  Banker banker;
 
+    private  Banker banker;
 
     /**
      * @param currentPlayerIsPlayer1 is inialziated as boolean for playerturns.
@@ -88,8 +90,13 @@ public class MonopolyBoard {
 
         this.player1 = new Player();
         this.player2 = new Player();
+        this.banker = new Banker();
         this.currentPlayerIsPlayer1 = true;
+
+
     }
+
+
 
     /**
      * sets Dice object to be used  for this board game.
@@ -138,11 +145,11 @@ public class MonopolyBoard {
 
         int currentPosition = player.getPlayerPosition();
         currentPosition = (currentPosition + roll) % boardsize;
-        player.setPlayerPosition(currentPosition);  // setting the players position to the current position on the board.
+        player.setPlayerPosition(currentPosition);// setting the players position to the current position on the board.
 
 
 
-
+        player.setCurrentRoll(roll1,roll2);
 
 
         BoardSpace currentSpace = spaces[currentPosition];
@@ -155,7 +162,9 @@ public class MonopolyBoard {
 
             case HOME:
                 System.out.println("You landed on Home");
-                player.recieveMoneyFromBanker(200);
+                player.receiveMoneyFromBanker(200);
+                banker.payPlayer(200);
+
 
                 break;
             case ROAD:
@@ -164,12 +173,14 @@ public class MonopolyBoard {
             case OLD_KENT_ROAD:
                 System.out.println("You landed on Old Kent Road");
 
+
                 break;
             case PALL_MALL:
                 System.out.println("You landed on Pall Mall");
                 break;
             case PADDIGTON:
                 System.out.println("You landed on Paddigton Station");
+                player.payTicket();
                 break;
             case THE_STRAND:
                 System.out.println("You landed on The  Strand");
@@ -179,6 +190,7 @@ public class MonopolyBoard {
                 break;
             case WATERLOO:
                 System.out.println("You landed on Waterloo station");
+                player.payTicket();
                 break;
             case LECISTER_SQUARE:
                 System.out.println("You landed on Lecister Square");
@@ -192,7 +204,11 @@ public class MonopolyBoard {
         }
 
 
-        System.out.println("Player" + (currentPlayerIsPlayer1 ? " 1 " : " 2 ") + " now has  " + player.getPlayerBalance() + " as balance.");
+
+
+
+        System.out.println("Player" + (currentPlayerIsPlayer1 ? " 1 " : " 2 ") + " Balance: " + player.getPlayerBalance());
+        currentPlayerIsPlayer1 = !currentPlayerIsPlayer1;
         return player.getPlayerBalance() <= 0;
 
 
@@ -205,6 +221,10 @@ public class MonopolyBoard {
      */
     public void play() {
         while (true) {
+           // Scanner sc = new Scanner(System.in);
+            //System.out.println("Press Enter to roll the dice");
+            //sc.nextLine();
+
             boolean gameover = playTurn(player1);
             if (gameover) {
                 System.out.println("Gameover");
@@ -220,4 +240,3 @@ public class MonopolyBoard {
     }
 
 }
-

@@ -33,11 +33,10 @@ public final class Application {
 
 
         MonopolyBoard board = new MonopolyBoard();
-        Banker banker = new Banker();
         Player player = new Player();
+        Banker banker = new Banker();
         Dice dice = new Dice(6);
         board.setDice(dice);
-
         //board.play();
         board.playTurn(player);
 

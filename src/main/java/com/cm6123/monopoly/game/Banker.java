@@ -1,64 +1,72 @@
+
 package com.cm6123.monopoly.game;
 
 /**
  * Class for Banker.
  */
-public class Banker {
-    /**
-     *@param bankerbalance is the amount banker has.
-     */
-    private int bankerbalance;
 
-    /**
-     * @param player used to create a Player object.
-     */
+ public class Banker {
 
-    private Player player;
-    /**
-     * Constructor.
-     *  bankerbalance is set to 5000.
-     */
+        /**
+         *@param bankerbalance is the amount banker has.
+         */
+        private int bankerbalance;
 
-    public Banker(){
+        /**
+         * @param player used to create a Player object.
+         */
 
-        bankerbalance = 5000;
+        private Player player;
+        /**
+         * Constructor.
+         *  bankerbalance is set to 5000.
+         */
 
-    }
+        //private  MonopolyBoard board;
+        public Banker(){
 
-    /**
-     * Gets the bankers balance.
-     * @return bankerbalance
-     */
-    public  int getBankerBalance() {
-        return bankerbalance;
-    }
+                bankerbalance = 5000;
 
+        }
 
-    /**
-     * Method for banker to pay player.
-     * @param aplayer player called on receive money method.
-     * @param amount amount is not a fixed value.
-     */
+        /**
+         * Gets the bankers balance.
+         * @return bankerbalance
+         */
+        public  int getBankerBalance() {
+                return bankerbalance;
+        }
 
 
+        /**
+         * Method for banker to pay player.
+         * @param amount amount is not a fixed value.
+         */
 
 
-    public void payPlayer(final Player aplayer,final int amount){
-        bankerbalance -= amount;
-        System.out.println("Player given" + amount);
-        aplayer.recieveMoneyFromBanker(amount);
 
-    }
 
-    /**
-     * Method created for banker to recieve money from player.
-     * @param amount
-     */
+        public void payPlayer(final int amount){
+                bankerbalance -= amount;
+                System.out.println("Player given" + amount);
+                //player.receiveMoneyFromBanker(amount);
 
-    public void recieveMoneyFromPlayer(final int amount){
-        bankerbalance += amount;
+        }
 
-        System.out.println("Received" + amount + "From Player");
-        player.payBanker(amount);
-    }
+        /**
+         * Method created for banker to recieve money from player.
+         * @param amount
+         */
+
+        public void receiveMoneyFromPlayer(final int amount){
+                bankerbalance += amount;
+
+                System.out.println("Received" + amount + "From Player");
+                //player.payBanker(amount);
+        }
 }
+
+
+
+
+

@@ -25,6 +25,22 @@ public class Player {
     private int playerBalance;
 
     /**
+     * @param ticketprice used to store the value of ticket price for stations.
+     */
+
+    private int ticketPrice;
+
+    /**
+     * @param rollValue1 is used to store roll1 value of the dice.
+     */
+    private int rollValue1;
+
+    /**
+     * @param rollValue2 is used to store roll2 value of dice.
+     */
+    private int rollValue2;
+
+    /**
      @param board used to create a monopoly board object.
      */
 
@@ -36,6 +52,8 @@ public class Player {
     private Banker banker;
 
 
+
+
     /**
      * Constructor created for player.
      */
@@ -45,6 +63,10 @@ public class Player {
         playerPosition = 0;
         playerBalance = 1000;
         dice = new Dice(6);
+         banker = new Banker();
+
+
+
 
 
     }
@@ -85,7 +107,10 @@ public class Player {
      *
      * @param amount
      */
-    public void recieveMoneyFromBanker(final int amount) {
+
+
+
+    public void receiveMoneyFromBanker(final int amount) {
         playerBalance += amount;
 
 
@@ -99,12 +124,32 @@ public class Player {
      */
     public void payBanker(final int amount) {
         playerBalance -= amount;
-        banker.recieveMoneyFromPlayer(amount);
+
+    }
+
+    /**
+     *  Sets current roll of dice.
+     * @param roll1
+     * @param roll2
+     */
+    public void setCurrentRoll(final int roll1, final int roll2){
+
+        this.rollValue1= roll1;
+        this.rollValue2 = roll2;
+    }
+
+
+    /**
+     * Method to calcuate amount for ticket price that player needs to pay.
+     */
+    public void payTicket(){
+        ticketPrice = 10 * (rollValue1 + rollValue2);  //Ticket fee is 10 * the value of last roll
+        payBanker(ticketPrice);  // player then pays ticket fee to Banker
+        System.out.println(" Player paid " + ticketPrice + " at station ");
     }
 
 
 
-
-    }
+}
 
 
