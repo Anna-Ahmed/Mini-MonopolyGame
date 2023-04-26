@@ -187,6 +187,7 @@ public class MonopolyBoard {
                 break;
             case TAX_OFFICE:
                 System.out.println("You landed on Tax Office");
+                player.payTax();
                 break;
             case WATERLOO:
                 System.out.println("You landed on Waterloo station");
@@ -221,8 +222,8 @@ public class MonopolyBoard {
      */
     public void play() {
         while (true) {
-           // Scanner sc = new Scanner(System.in);
-            //System.out.println("Press Enter to roll the dice");
+           //Scanner sc = new Scanner(System.in);
+            // System.out.println("Press Enter to roll the dice");
             //sc.nextLine();
 
             boolean gameover = playTurn(player1);

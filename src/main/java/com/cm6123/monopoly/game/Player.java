@@ -41,7 +41,12 @@ public class Player {
     private int rollValue2;
 
     /**
-     @param board used to create a monopoly board object.
+     * @param taxprice used to store value of tax.
+     */
+    private int taxprice;
+
+    /**
+     * @param board used to create a monopoly board object.
      */
 
     private MonopolyBoard board;
@@ -50,8 +55,6 @@ public class Player {
      * @paraam banker used to create banker object for Banker class.
      */
     private Banker banker;
-
-
 
 
     /**
@@ -63,10 +66,7 @@ public class Player {
         playerPosition = 0;
         playerBalance = 1000;
         dice = new Dice(6);
-         banker = new Banker();
-
-
-
+        banker = new Banker();
 
 
     }
@@ -109,10 +109,8 @@ public class Player {
      */
 
 
-
     public void receiveMoneyFromBanker(final int amount) {
         playerBalance += amount;
-
 
 
     }
@@ -128,13 +126,14 @@ public class Player {
     }
 
     /**
-     *  Sets current roll of dice.
+     * Sets current roll of dice.
+     *
      * @param roll1
      * @param roll2
      */
-    public void setCurrentRoll(final int roll1, final int roll2){
+    public void setCurrentRoll(final int roll1, final int roll2) {
 
-        this.rollValue1= roll1;
+        this.rollValue1 = roll1;
         this.rollValue2 = roll2;
     }
 
@@ -142,14 +141,28 @@ public class Player {
     /**
      * Method to calcuate amount for ticket price that player needs to pay.
      */
-    public void payTicket(){
+    public void payTicket() {
         ticketPrice = 10 * (rollValue1 + rollValue2);  //Ticket fee is 10 * the value of last roll
         payBanker(ticketPrice);  // player then pays ticket fee to Banker
         System.out.println(" Player paid " + ticketPrice + " at station ");
     }
 
 
+    /**
+     * Method to calculate tax price based on player balance and if play rolled a double or single.
+     */
+    public void payTax() {
+        if (rollValue1 == rollValue2) {
+            taxprice = (int) ((playerBalance * 0.1) / 2);
+            payBanker(taxprice);
 
+        } else {
+            taxprice = (int) (playerBalance * 0.1);
+            payBanker(taxprice);
+        }
+
+
+    }
 }
 
 
