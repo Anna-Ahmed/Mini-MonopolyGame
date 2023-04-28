@@ -36,18 +36,17 @@ public class MonopolyBoardTest {
 
     private static Stream<Arguments> LandingOnBoardSpaces() {
         return Stream.of(
+                Arguments.of(new int[]{1, 0}, MonopolyBoard.BoardSpace.ROAD),
                 Arguments.of(new int[]{1, 1}, MonopolyBoard.BoardSpace.ROAD),
-                Arguments.of(new int[]{2, 1}, MonopolyBoard.BoardSpace.ROAD),
-                Arguments.of(new int[]{2, 2}, MonopolyBoard.BoardSpace.OLD_KENT_ROAD),
-                Arguments.of(new int[]{2, 3}, MonopolyBoard.BoardSpace.PALL_MALL),
-                Arguments.of(new int[]{4, 2}, MonopolyBoard.BoardSpace.ROAD),
-                Arguments.of(new int[]{3, 4}, MonopolyBoard.BoardSpace.PADDIGTON),
-                Arguments.of(new int[]{5, 3}, MonopolyBoard.BoardSpace.ROAD),
-                Arguments.of(new int[]{6, 3}, MonopolyBoard.BoardSpace.THE_STRAND),
-                Arguments.of(new int[]{5, 5}, MonopolyBoard.BoardSpace.ROAD),
-                Arguments.of(new int[]{5, 5}, MonopolyBoard.BoardSpace.ROAD),
-                Arguments.of(new int[]{6, 5}, MonopolyBoard.BoardSpace.TAX_OFFICE),
-                Arguments.of(new int[]{6, 6}, MonopolyBoard.BoardSpace.WATERLOO)
+                Arguments.of(new int[]{2, 1}, MonopolyBoard.BoardSpace.OLD_KENT_ROAD),
+                Arguments.of(new int[]{2, 2}, MonopolyBoard.BoardSpace.PALL_MALL),
+                Arguments.of(new int[]{4, 1}, MonopolyBoard.BoardSpace.ROAD),
+                Arguments.of(new int[]{3, 3}, MonopolyBoard.BoardSpace.PADDIGTON),
+                Arguments.of(new int[]{5, 2}, MonopolyBoard.BoardSpace.ROAD),
+                Arguments.of(new int[]{6, 2}, MonopolyBoard.BoardSpace.THE_STRAND),
+                Arguments.of(new int[]{5, 4}, MonopolyBoard.BoardSpace.ROAD),
+                Arguments.of(new int[]{5, 5}, MonopolyBoard.BoardSpace.TAX_OFFICE),
+                Arguments.of(new int[]{6, 6}, MonopolyBoard.BoardSpace.LECISTER_SQUARE)
 
         );
 
@@ -62,7 +61,7 @@ public class MonopolyBoardTest {
         Player player = board.getPlayer1();
 
         //Given
-        player.setPlayerPosition(11);
+        player.setPlayerPosition(10);
 
         //When
         TestDice mockdice = new TestDice(rollValues);
@@ -79,7 +78,8 @@ public class MonopolyBoardTest {
                 Arguments.of(new int[]{1, 1}, MonopolyBoard.BoardSpace.LECISTER_SQUARE),
                 Arguments.of(new int[]{1, 2}, MonopolyBoard.BoardSpace.ROAD),
                 Arguments.of(new int[]{3, 1}, MonopolyBoard.BoardSpace.PARK_LANE),
-                Arguments.of(new int[]{4, 2}, MonopolyBoard.BoardSpace.HOME)
+                Arguments.of(new int[]{4, 2}, MonopolyBoard.BoardSpace.HOME),
+                Arguments.of(new int[]{3, 2}, MonopolyBoard.BoardSpace.ROAD)
 
 
         );
@@ -93,7 +93,7 @@ public class MonopolyBoardTest {
 
 
         //Given players postion is 11 on the board
-        player.setPlayerPosition(11);
+        player.setPlayerPosition(10);
 
 
         //When dice is rolled and player is on Home
@@ -125,14 +125,14 @@ public class MonopolyBoardTest {
 
 
         //When dice is rolled and player lands on Paddington
-        int[] rolls = {2,3};
+        int[] rolls = {2,2};
         TestDice mockdice = new TestDice(rolls);
         board.setDice(mockdice);
         int currentPlayerBalance = player.getPlayerBalance();
         board.playTurn(player);
         //then player will pay 10 * the value of dice roll as ticket fee
 
-        int expectedPlayerBalance = currentPlayerBalance - (10 *( 2 +  3));
+        int expectedPlayerBalance = currentPlayerBalance - (10 *( 2 +  2));
         int actualMoney = player.getPlayerBalance();
 
 
@@ -155,14 +155,14 @@ public class MonopolyBoardTest {
 
 
         //When dice is rolled and player lands on Waterloo
-        int[] rolls = {5,3};
+        int[] rolls = {5,2};
         TestDice mockdice = new TestDice(rolls);
         board.setDice(mockdice);
         int currentPlayerBalance = player.getPlayerBalance();
         board.playTurn(player);
         //then player will pay 10 * the value of dice roll as ticket fee
 
-        int expectedPlayerBalance = currentPlayerBalance - (10 *( 5 +  3));
+        int expectedPlayerBalance = currentPlayerBalance - (10 *( 5 +  2));
         int actualMoney = player.getPlayerBalance();
 
 
@@ -185,8 +185,8 @@ public class MonopolyBoardTest {
         player.setPlayerPosition(4);
 
 
-        //When dice is rolled and player lands on Waterloo
-        int[] rolls = {5,2};
+        //When dice is rolled and player lands on Tax Office
+        int[] rolls = {4,2};
         TestDice mockdice = new TestDice(rolls);
         board.setDice(mockdice);
         int currentPlayerBalance = player.getPlayerBalance();
@@ -212,10 +212,10 @@ public class MonopolyBoardTest {
 
 
         //Given players postion is 4 on the board
-        player.setPlayerPosition(1);
+        player.setPlayerPosition(0);
 
 
-        //When dice is rolled and player lands on Waterloo
+        //When dice is rolled and player lands on Tax office
         int[] rolls = {5,5};
         TestDice mockdice = new TestDice(rolls);
         board.setDice(mockdice);

@@ -37,8 +37,11 @@ public final class Application {
         Banker banker = new Banker();
         Dice dice = new Dice(6);
         board.setDice(dice);
-        //board.play();
-        board.playTurn(player);
+
+
+
+        board.play();
+        //board.playTurn(player);
 
 
         logger.info("Application closing");

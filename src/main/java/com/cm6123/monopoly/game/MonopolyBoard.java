@@ -3,7 +3,7 @@ package com.cm6123.monopoly.game;
 
 import com.cm6123.monopoly.dice.Dice;
 
-//import java.util.Scanner;
+import java.util.Scanner;
 
 
 /**
@@ -26,7 +26,7 @@ public class MonopolyBoard {
      */
     private Dice dice;
     /**
-     *  @param player1  is used to create an object player1 of the Player class.
+     * @param player1  is used to create an object player1 of the Player class.
      */
     private Player player1;
     /**
@@ -38,49 +38,50 @@ public class MonopolyBoard {
      */
 
 
-    private  Banker banker;
+    private Banker banker;
 
     /**
      * @param currentPlayerIsPlayer1 is inialziated as boolean for playerturns.
      */
     private boolean currentPlayerIsPlayer1;
+
     /**
-     *  enum represting the spaces on the board.
+     * enum represting the spaces on the board.
      */
     public enum BoardSpace {
 
         /**
          * Set of spaces definied as enums.
          */
-        HOME, ROAD, OLD_KENT_ROAD, PALL_MALL, PADDIGTON, THE_STRAND,TAX_OFFICE, WATERLOO, LECISTER_SQUARE,PARK_LANE;
+        HOME, ROAD, OLD_KENT_ROAD, PALL_MALL, PADDIGTON, THE_STRAND, TAX_OFFICE, WATERLOO, LECISTER_SQUARE, PARK_LANE;
     }
 
 
     /**
-     *  Constructing  a new  board with instances.
+     * Constructing  a new  board with instances.
      */
     public MonopolyBoard() {
         this.spaces = new BoardSpace[boardsize];
         for (int i = 0; i < boardsize; i++) { // looping through the boardsize
-            if (i % 16 == 1) {   // assigning  positions to the board spaces on the board
+            if (i % 16 == 0) {   // assigning  positions to the board spaces on the board
                 spaces[i] = BoardSpace.HOME;
-            } else if (i % 16 == 2 || i % 16 == 3 || i % 16 == 6 || i % 16 == 8 || i % 16 == 10 || i % 16 == 14) {
+            } else if (i % 16 == 1 || i % 16 == 2 || i % 16 == 5 || i % 16 == 7 || i % 16 == 9 || i % 16 == 13 || i % 16 == 15)   {
                 spaces[i] = BoardSpace.ROAD;
-            } else if (i % 16 == 4) {
+            } else if (i % 16 == 3) {
                 spaces[i] = BoardSpace.OLD_KENT_ROAD;
-            } else if (i % 16 == 5) {
+            } else if (i % 16 == 4) {
                 spaces[i] = BoardSpace.PALL_MALL;
-            } else if (i % 16 == 7) {
+            } else if (i % 16 == 6) {
                 spaces[i] = BoardSpace.PADDIGTON;
-            } else if (i % 16 == 9) {
+            } else if (i % 16 == 8) {
                 spaces[i] = BoardSpace.THE_STRAND;
-            } else if (i % 16 == 11) {
+            } else if (i % 16 == 10) {
                 spaces[i] = BoardSpace.TAX_OFFICE;
-            } else if (i % 16 == 12) {
+            } else if (i % 16 == 11) {
                 spaces[i] = BoardSpace.WATERLOO;
-            } else if (i % 16 == 13) {
+            } else if (i % 16 == 12) {
                 spaces[i] = BoardSpace.LECISTER_SQUARE;
-            } else if (i % 16 == 15) {
+            } else if (i % 16 == 14) {
                 spaces[i] = BoardSpace.PARK_LANE;
 
 
@@ -97,9 +98,9 @@ public class MonopolyBoard {
     }
 
 
-
     /**
      * sets Dice object to be used  for this board game.
+     *
      * @param aDice doesn't return param
      */
     public void setDice(final Dice aDice) {
@@ -108,15 +109,17 @@ public class MonopolyBoard {
 
     /**
      * Returns an array of spaces  representing the spaces on the board.
-     * @return  An array of Spaces.
+     *
+     * @return An array of Spaces.
      */
     public BoardSpace[] getSpaces() {
         return spaces;
     }
 
     /**
-     *  Sets array of spaces on the board.
+     * Sets array of spaces on the board.
      * An array of Space objects  here for future use.
+     *
      * @param aSpaces doesn't use param
      */
     public void setSpaces(final BoardSpace[] aSpaces) {
@@ -125,13 +128,16 @@ public class MonopolyBoard {
 
     /**
      * Gets player1.
+     *
      * @return player1.
      */
-    public Player getPlayer1(){
+    public Player getPlayer1() {
         return player1;
     }
+
     /**
      * Method created for players to play their turn in the game.
+     *
      * @param player The Player object represnts the player.
      * @return A boolean indicating if its players turn or if game is over.
      */
@@ -148,14 +154,10 @@ public class MonopolyBoard {
         player.setPlayerPosition(currentPosition);// setting the players position to the current position on the board.
 
 
-
-        player.setCurrentRoll(roll1,roll2);
+        player.setCurrentRoll(roll1, roll2);
 
 
         BoardSpace currentSpace = spaces[currentPosition];
-
-
-
 
 
         switch (currentSpace) {
@@ -205,13 +207,9 @@ public class MonopolyBoard {
         }
 
 
-
-
-
         System.out.println("Player" + (currentPlayerIsPlayer1 ? " 1 " : " 2 ") + " Balance: " + player.getPlayerBalance());
         currentPlayerIsPlayer1 = !currentPlayerIsPlayer1;
         return player.getPlayerBalance() <= 0;
-
 
 
     }
@@ -222,13 +220,14 @@ public class MonopolyBoard {
      */
     public void play() {
         while (true) {
-           //Scanner sc = new Scanner(System.in);
-            // System.out.println("Press Enter to roll the dice");
-            //sc.nextLine();
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Press Enter to roll the dice");
+            sc.nextLine();
 
             boolean gameover = playTurn(player1);
             if (gameover) {
                 System.out.println("Gameover");
+
 
             }
             gameover = playTurn(player2);
