@@ -1,7 +1,12 @@
 package com.cm6123.monopoly.game;
 
 
+import com.cm6123.monopoly.app.Application;
+import com.cm6123.monopoly.app.GameLogicHandlers;
+import com.cm6123.monopoly.app.GamesBoardSpacesHandler;
 import com.cm6123.monopoly.dice.Dice;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Scanner;
 
@@ -10,6 +15,9 @@ import java.util.Scanner;
  * A class reprenting a Monopoly Board.
  */
 public class MonopolyBoard {
+
+
+    private static Logger logger = LoggerFactory.getLogger(MonopolyBoard.class);
 
     /**
      * creating the board for the monopoly game.
@@ -37,6 +45,13 @@ public class MonopolyBoard {
      * @param banker is used to create a banker object for Banker class.
      */
 
+private GamesBoardSpacesHandler space;
+
+private GameLogicHandlers logic;
+
+
+private int roll;
+
 
     private Banker banker;
 
@@ -44,6 +59,10 @@ public class MonopolyBoard {
      * @param currentPlayerIsPlayer1 is inialziated as boolean for playerturns.
      */
     private boolean currentPlayerIsPlayer1;
+
+    public boolean isHouse(int playerPosition) {
+        return spaces[playerPosition] == BoardSpace.OLD_KENT_ROAD;
+    }
 
     /**
      * enum represting the spaces on the board.
@@ -91,11 +110,16 @@ public class MonopolyBoard {
 
         this.player1 = new Player();
         this.player2 = new Player();
+        this.space = new GamesBoardSpacesHandler();
         this.banker = new Banker();
         this.currentPlayerIsPlayer1 = true;
+        this.logic = new GameLogicHandlers();
 
 
     }
+
+
+
 
 
     /**
@@ -146,7 +170,7 @@ public class MonopolyBoard {
 
         int roll1 = dice.roll();
         int roll2 = dice.roll();
-        int roll = roll1 + roll2;   // rolling two dice to get total roll
+        roll = roll1 + roll2;   // rolling two dice to get total roll
         System.out.println("You rolled a  " + roll1 + " and " + roll2 + " for a " + roll);
 
         int currentPosition = player.getPlayerPosition();
@@ -163,46 +187,50 @@ public class MonopolyBoard {
         switch (currentSpace) {
 
             case HOME:
-                System.out.println("You landed on Home");
+                space.Space0();
                 player.receiveMoneyFromBanker(200);
                 banker.payPlayer(200);
-
-
                 break;
+
             case ROAD:
-                System.out.println(" You landed on Road");
+                space.Space1();
+
                 break;
+
             case OLD_KENT_ROAD:
-                System.out.println("You landed on Old Kent Road");
+                space.Space2();
+
+
 
 
                 break;
             case PALL_MALL:
-                System.out.println("You landed on Pall Mall");
+                space.Space3();
                 break;
             case PADDIGTON:
-                System.out.println("You landed on Paddigton Station");
+                space.Space4();
                 player.payTicket();
                 break;
             case THE_STRAND:
-                System.out.println("You landed on The  Strand");
+                space.Space5();
                 break;
             case TAX_OFFICE:
-                System.out.println("You landed on Tax Office");
+                space.Space6();
                 player.payTax();
                 break;
             case WATERLOO:
-                System.out.println("You landed on Waterloo station");
+                space.Space7();
+
                 player.payTicket();
                 break;
             case LECISTER_SQUARE:
-                System.out.println("You landed on Lecister Square");
+                space.Space8();
                 break;
             case PARK_LANE:
-                System.out.println("You landed on Park Lane");
+                space.Space9();
                 break;
             default:
-                System.out.print("Space doesn't exist");
+                space.Space10();
                 break;
         }
 
@@ -220,9 +248,7 @@ public class MonopolyBoard {
      */
     public void play() {
         while (true) {
-            Scanner sc = new Scanner(System.in);
-            System.out.println("Press Enter to roll the dice");
-            sc.nextLine();
+            logic.RollingDice();
 
             boolean gameover = playTurn(player1);
             if (gameover) {

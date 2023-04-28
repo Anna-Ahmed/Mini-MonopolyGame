@@ -7,6 +7,8 @@ import com.cm6123.monopoly.game.Player;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Scanner;
+
 
 public final class Application {
     /**
@@ -16,7 +18,10 @@ public final class Application {
 
 
     private Application() {
+        MonopolyBoard board = new MonopolyBoard();
     }
+
+
 
     /**
      * main entry point.  If args provided, result is displayed and program exists. Otherwise, user is prompted for
@@ -24,6 +29,10 @@ public final class Application {
      *
      * @param args command line args.
      */
+
+
+
+
     public static void main(final String[] args) {
 
 
@@ -33,10 +42,17 @@ public final class Application {
 
 
         MonopolyBoard board = new MonopolyBoard();
+        GamesBoardSpacesHandler spaces = new GamesBoardSpacesHandler();
         Player player = new Player();
         Banker banker = new Banker();
         Dice dice = new Dice(6);
         board.setDice(dice);
+        GameLogicHandlers logic = new GameLogicHandlers();
+
+
+
+
+
 
 
 
