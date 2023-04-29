@@ -1,23 +1,16 @@
 package com.cm6123.monopoly.game;
 
 
-import com.cm6123.monopoly.app.Application;
 import com.cm6123.monopoly.app.GameLogicHandlers;
 import com.cm6123.monopoly.app.GamesBoardSpacesHandler;
 import com.cm6123.monopoly.dice.Dice;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import java.util.Scanner;
 
 
 /**
  * A class reprenting a Monopoly Board.
  */
 public class MonopolyBoard {
-
-
-    private static Logger logger = LoggerFactory.getLogger(MonopolyBoard.class);
 
     /**
      * creating the board for the monopoly game.
@@ -42,15 +35,30 @@ public class MonopolyBoard {
      */
     private Player player2;
     /**
-     * @param banker is used to create a banker object for Banker class.
+     * @param space is used to create a space object for the GamesboardSpacesHandler.
      */
 
-private GamesBoardSpacesHandler space;
-
-private GameLogicHandlers logic;
+    private GamesBoardSpacesHandler space;
 
 
-private int roll;
+    /**
+     * @param logic is used to create a space object for the GameLogicHandler.
+     */
+
+    private GameLogicHandlers logic;
+
+
+    /**
+     * @param roll is used to stored an integer for dice roll value.
+     */
+
+
+    private int roll;
+
+
+    /**
+     * @param banker is used to create a banker object for Banker class.
+     */
 
 
     private Banker banker;
@@ -60,9 +68,10 @@ private int roll;
      */
     private boolean currentPlayerIsPlayer1;
 
-    public boolean isHouse(int playerPosition) {
-        return spaces[playerPosition] == BoardSpace.OLD_KENT_ROAD;
-    }
+
+
+
+
 
     /**
      * enum represting the spaces on the board.
@@ -73,6 +82,51 @@ private int roll;
          * Set of spaces definied as enums.
          */
         HOME, ROAD, OLD_KENT_ROAD, PALL_MALL, PADDIGTON, THE_STRAND, TAX_OFFICE, WATERLOO, LECISTER_SQUARE, PARK_LANE;
+
+        /**
+         * using Player class to create a owner object.
+         */
+        private Player owner;
+        /**
+         * @param player is used to set the owner of property spaces.
+         */
+        public void setOwner(Player player) {
+            this.owner = player;
+        }
+
+        /**
+         *
+         * @return owner is used to get the owner of space.
+         */
+
+        public Player getOwner() {
+            return owner;
+        }
+
+        /**
+         * @param payingrent is used to created a player object of player who pays rent.
+         */
+
+        private Player payingrent;
+
+
+        /**
+         *
+         * @return paying rent is used to get the player paying rent.
+         */
+
+        public Player getPayingrent(){
+            return payingrent;
+        }
+
+        /**
+         *
+         * @param player is used to set player paying rent.
+         */
+
+        public void setPayingrent(Player player){
+            this.payingrent = player;
+        }
     }
 
 
@@ -84,7 +138,7 @@ private int roll;
         for (int i = 0; i < boardsize; i++) { // looping through the boardsize
             if (i % 16 == 0) {   // assigning  positions to the board spaces on the board
                 spaces[i] = BoardSpace.HOME;
-            } else if (i % 16 == 1 || i % 16 == 2 || i % 16 == 5 || i % 16 == 7 || i % 16 == 9 || i % 16 == 13 || i % 16 == 15)   {
+            } else if (i % 16 == 1 || i % 16 == 2 || i % 16 == 5 || i % 16 == 7 || i % 16 == 9 || i % 16 == 13 || i % 16 == 15 || i % 16 == 16)   {
                 spaces[i] = BoardSpace.ROAD;
             } else if (i % 16 == 3) {
                 spaces[i] = BoardSpace.OLD_KENT_ROAD;
@@ -116,6 +170,9 @@ private int roll;
         this.logic = new GameLogicHandlers();
 
 
+
+
+
     }
 
 
@@ -137,6 +194,7 @@ private int roll;
      * @return An array of Spaces.
      */
     public BoardSpace[] getSpaces() {
+
         return spaces;
     }
 
@@ -160,6 +218,24 @@ private int roll;
     }
 
     /**
+     * Gets player 2.
+     * @return player 2.
+     */
+
+    public Player getPlayer2(){
+        return player2;
+    }
+
+    /**
+     * boolean created to get current player equal  to player1.
+     * @return currentPlayerisPlayer1.
+     */
+    public boolean getCurrentPlayerIsPlayer1(){
+        return currentPlayerIsPlayer1;
+
+    }
+
+    /**
      * Method created for players to play their turn in the game.
      *
      * @param player The Player object represnts the player.
@@ -178,59 +254,61 @@ private int roll;
         player.setPlayerPosition(currentPosition);// setting the players position to the current position on the board.
 
 
+
+
         player.setCurrentRoll(roll1, roll2);
 
 
         BoardSpace currentSpace = spaces[currentPosition];
 
 
+
         switch (currentSpace) {
 
             case HOME:
-                space.Space0();
+                space.space0();
                 player.receiveMoneyFromBanker(200);
                 banker.payPlayer(200);
                 break;
 
             case ROAD:
-                space.Space1();
+                space.space1();
 
                 break;
 
             case OLD_KENT_ROAD:
-                space.Space2();
-
-
-
-
+                space.space2();
+                Properties oldkent = new Properties();
+                oldkent.buyOldKent(player);
                 break;
             case PALL_MALL:
-                space.Space3();
+                space.space3();
                 break;
             case PADDIGTON:
-                space.Space4();
+                space.space4();
                 player.payTicket();
                 break;
             case THE_STRAND:
-                space.Space5();
+                space.space5();
+
                 break;
             case TAX_OFFICE:
-                space.Space6();
+                space.space6();
                 player.payTax();
                 break;
             case WATERLOO:
-                space.Space7();
+                space.space7();
 
                 player.payTicket();
                 break;
             case LECISTER_SQUARE:
-                space.Space8();
+                space.space8();
                 break;
             case PARK_LANE:
-                space.Space9();
+                space.space9();
                 break;
             default:
-                space.Space10();
+                space.space10();
                 break;
         }
 
@@ -247,8 +325,9 @@ private int roll;
      * Method for playing monoploy until game is over.
      */
     public void play() {
+
         while (true) {
-            logic.RollingDice();
+            logic.player1Turn();
 
             boolean gameover = playTurn(player1);
             if (gameover) {
@@ -256,13 +335,21 @@ private int roll;
 
 
             }
+
+            logic.player2Turn();
+
+
+
+
             gameover = playTurn(player2);
             if (gameover) {
                 System.out.println("Game Over");
                 return;
             }
+
+            }
         }
 
     }
 
-}
+

@@ -43,11 +43,13 @@ public final class Application {
 
         MonopolyBoard board = new MonopolyBoard();
         GamesBoardSpacesHandler spaces = new GamesBoardSpacesHandler();
+        //Properties props = new Properties("Old", 60,20);
         Player player = new Player();
         Banker banker = new Banker();
         Dice dice = new Dice(6);
         board.setDice(dice);
         GameLogicHandlers logic = new GameLogicHandlers();
+
 
 
 

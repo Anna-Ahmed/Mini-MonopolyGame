@@ -3,6 +3,7 @@ package com.cm6123.monopoly;
 import com.cm6123.monopoly.dice.TestDice;
 import com.cm6123.monopoly.game.MonopolyBoard;
 import com.cm6123.monopoly.game.Player;
+import com.cm6123.monopoly.game.Properties;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -86,8 +87,9 @@ public class MonopolyBoardTest {
 
 
     }
+
     @Test
-    public void PlayerRecieveMoneyOnHomeSpace(){
+    public void PlayerRecieveMoneyOnHomeSpace() {
         MonopolyBoard board = new MonopolyBoard();
         Player player = board.getPlayer1();
 
@@ -109,13 +111,12 @@ public class MonopolyBoardTest {
         assertEquals(expectedPlayerBalance, player.getPlayerBalance());
 
 
-
     }
 
 
     // Test to check if player lands on station they pay the ticket fee
     @Test
-    public void PaddingtonTicket(){
+    public void PaddingtonTicket() {
         MonopolyBoard board = new MonopolyBoard();
         Player player = board.getPlayer1();
 
@@ -125,27 +126,25 @@ public class MonopolyBoardTest {
 
 
         //When dice is rolled and player lands on Paddington
-        int[] rolls = {2,2};
+        int[] rolls = {2, 2};
         TestDice mockdice = new TestDice(rolls);
         board.setDice(mockdice);
         int currentPlayerBalance = player.getPlayerBalance();
         board.playTurn(player);
         //then player will pay 10 * the value of dice roll as ticket fee
 
-        int expectedPlayerBalance = currentPlayerBalance - (10 *( 2 +  2));
+        int expectedPlayerBalance = currentPlayerBalance - (10 * (2 + 2));
         int actualMoney = player.getPlayerBalance();
-
 
 
         assertEquals(expectedPlayerBalance, player.getPlayerBalance());
 
 
-
     }
 
-// Test to check when player lands on Waterloo they pay correct ticket fee
+    // Test to check when player lands on Waterloo they pay correct ticket fee
     @Test
-    public void WaterlooTicket(){
+    public void WaterlooTicket() {
         MonopolyBoard board = new MonopolyBoard();
         Player player = board.getPlayer1();
 
@@ -155,28 +154,26 @@ public class MonopolyBoardTest {
 
 
         //When dice is rolled and player lands on Waterloo
-        int[] rolls = {5,2};
+        int[] rolls = {5, 2};
         TestDice mockdice = new TestDice(rolls);
         board.setDice(mockdice);
         int currentPlayerBalance = player.getPlayerBalance();
         board.playTurn(player);
         //then player will pay 10 * the value of dice roll as ticket fee
 
-        int expectedPlayerBalance = currentPlayerBalance - (10 *( 5 +  2));
+        int expectedPlayerBalance = currentPlayerBalance - (10 * (5 + 2));
         int actualMoney = player.getPlayerBalance();
-
 
 
         assertEquals(expectedPlayerBalance, player.getPlayerBalance());
 
 
-
     }
 
 
-// Test to check when player rolls single values they pay 10 % of current balance as tax
+    // Test to check when player rolls single values they pay 10 % of current balance as tax
     @Test
-    public void PlayerPayTaxFeeSingle(){
+    public void PlayerPayTaxFeeSingle() {
         MonopolyBoard board = new MonopolyBoard();
         Player player = board.getPlayer1();
 
@@ -186,7 +183,7 @@ public class MonopolyBoardTest {
 
 
         //When dice is rolled and player lands on Tax Office
-        int[] rolls = {4,2};
+        int[] rolls = {4, 2};
         TestDice mockdice = new TestDice(rolls);
         board.setDice(mockdice);
         int currentPlayerBalance = player.getPlayerBalance();
@@ -194,19 +191,17 @@ public class MonopolyBoardTest {
         //then player will pay 10 * the value of dice roll as ticket fee
 
 
-        double expectedPlayerBalance = currentPlayerBalance  - (currentPlayerBalance* 0.1);
-
+        double expectedPlayerBalance = currentPlayerBalance - (currentPlayerBalance * 0.1);
 
 
         assertEquals(expectedPlayerBalance, player.getPlayerBalance());
 
 
-
     }
 
-//Test to check when player rolls a double they pay 5% of currentBalance as tax
+    //Test to check when player rolls a double they pay 5% of currentBalance as tax
     @Test
-    public void playerPayTaxDouble(){
+    public void playerPayTaxDouble() {
         MonopolyBoard board = new MonopolyBoard();
         Player player = board.getPlayer1();
 
@@ -216,7 +211,7 @@ public class MonopolyBoardTest {
 
 
         //When dice is rolled and player lands on Tax office
-        int[] rolls = {5,5};
+        int[] rolls = {5, 5};
         TestDice mockdice = new TestDice(rolls);
         board.setDice(mockdice);
         int currentPlayerBalance = player.getPlayerBalance();
@@ -224,27 +219,16 @@ public class MonopolyBoardTest {
         //then player will pay 10 * the value of dice roll as ticket fee
 
 
-        double expectedPlayerBalance = currentPlayerBalance  - ((currentPlayerBalance* 0.1)/2);
-
+        double expectedPlayerBalance = currentPlayerBalance - ((currentPlayerBalance * 0.1) / 2);
 
 
         assertEquals(expectedPlayerBalance, player.getPlayerBalance());
 
 
-
     }
 
 
-
-
-
-
 }
-
-
-
-
-
 
 
 

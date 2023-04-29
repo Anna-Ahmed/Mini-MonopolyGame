@@ -30,15 +30,6 @@ package com.cm6123.monopoly.game;
         }
 
         /**
-         * Gets the bankers balance.
-         * @return bankerbalance
-         */
-        public  int getBankerBalance() {
-                return bankerbalance;
-        }
-
-
-        /**
          * Method for banker to pay player.
          * @param amount amount is not a fixed value.
          */

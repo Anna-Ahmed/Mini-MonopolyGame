@@ -57,6 +57,9 @@ public class Player {
     private Banker banker;
 
 
+    private Properties properties;
+
+
     /**
      * Constructor created for player.
      */
@@ -161,6 +164,13 @@ public class Player {
             payBanker(taxprice);
         }
 
+
+    }
+
+
+    public void buyHouse(int houseprice) {
+       payBanker(houseprice);
+       System.out.println("Player now owns the HOUSE space.");
 
     }
 }
