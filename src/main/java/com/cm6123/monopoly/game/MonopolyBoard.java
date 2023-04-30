@@ -282,7 +282,7 @@ public class MonopolyBoard {
             case OLD_KENT_ROAD:
                 space.space2();
                 Properties oldkent = new Properties();
-               // oldkent.buyOldKent(player);
+                oldkent.buyOldKent(player);
                 oldkent.payOldKentRent(player);
 
                 break;
@@ -342,7 +342,7 @@ public class MonopolyBoard {
      * Method for playing monoploy until game is over.
      */
     public void play() {
-        Properties oldkent = new Properties();
+        //Properties oldkent = new Properties();
 
 
         logic.player1Name();
@@ -360,9 +360,9 @@ public class MonopolyBoard {
                 return;
 
 
-            }else if(spaces[player1.getPlayerPosition()] == BoardSpace.OLD_KENT_ROAD){
-                logic.ask();
-                oldkent.buyOldKent(player1);
+           // }else if(spaces[player1.getPlayerPosition()] == BoardSpace.OLD_KENT_ROAD){
+             //   logic.ask();
+               // oldkent.buyOldKent(player1);
             }
             logic.player2Turn();
 
