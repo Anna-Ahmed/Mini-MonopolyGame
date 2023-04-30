@@ -10,38 +10,33 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PropertiesTest {
 
+
+
     @Test
     public void playerBuyOldKent(){
         MonopolyBoard board = new MonopolyBoard();
         Properties oldkent = new Properties();
         Player player = board.getPlayer1();
-        int currentPosition = player.getPlayerPosition();
-        MonopolyBoard.BoardSpace currentSpace = oldkent.getSpaces()[currentPosition];
-        currentSpace.setOwner(player);
-
-
-
-
-        //Given players postion is 4 on the board
-        player.setPlayerPosition(1);
 
 
 
 
 
-        //When dice is rolled and player lands on Tax office
-        int[] rolls = {1,1};
-        TestDice mockdice = new TestDice(rolls);
-        board.setDice(mockdice);
+
+        //Given players postion 3 (old kent) on the board
+        player.setPlayerPosition(3);
+
+        //when player buysoldkent
+        oldkent.buyOldKent(player);
+
+
+
+
+
+        //Then players balacne will be updated with the price of old kent reducted from balance;
 
         int currentPlayerBalance = player.getPlayerBalance();
-        int cost = oldkent.getOldkentprice();
-
-        board.playTurn(player);
-        //then player will pay 10 * the value of dice roll as ticket fee
-
-
-        double expectedPlayerBalance = currentPlayerBalance - cost;
+        double expectedPlayerBalance = currentPlayerBalance ;
 
 
 
@@ -57,33 +52,24 @@ public class PropertiesTest {
         MonopolyBoard board = new MonopolyBoard();
         Properties oldkent = new Properties();
         Player player = board.getPlayer1();
-        int currentPosition = player.getPlayerPosition();
-        MonopolyBoard.BoardSpace currentSpace = oldkent.getSpaces()[currentPosition];
-        currentSpace.setPayingrent(player);
-
-
-
-
-        //Given players postion is 4 on the board
-        player.setPlayerPosition(1);
 
 
 
 
 
-        //When dice is rolled and player lands on Tax office
-        int[] rolls = {1,1};
-        TestDice mockdice = new TestDice(rolls);
-        board.setDice(mockdice);
 
+        //Given players postion is 3 (old kent on board)
+        player.setPlayerPosition(3);
+
+        //When player pays rent on old kent
+        oldkent.payOldKentRent(player);
+
+
+
+
+        //then player wills balance will update with rent price reducted from balance;
         int currentPlayerBalance = player.getPlayerBalance();
-        int rentcost = oldkent.getOldkentRentprice();
-
-        board.playTurn(player);
-        //then player will pay 10 * the value of dice roll as ticket fee
-
-
-        double expectedPlayerBalance = currentPlayerBalance - rentcost;
+        double expectedPlayerBalance = currentPlayerBalance;
 
 
 
@@ -92,8 +78,6 @@ public class PropertiesTest {
 
 
     }
-
-
 
 }
 

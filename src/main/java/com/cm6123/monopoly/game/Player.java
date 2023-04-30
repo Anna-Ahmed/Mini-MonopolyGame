@@ -55,11 +55,6 @@ public class Player {
      * @paraam banker used to create banker object for Banker class.
      */
     private Banker banker;
-
-
-    private Properties properties;
-
-
     /**
      * Constructor created for player.
      */
@@ -104,7 +99,6 @@ public class Player {
     public int getPlayerBalance() {
         return playerBalance;
     }
-
     /**
      * Banker gives money  to player.
      *
@@ -142,6 +136,16 @@ public class Player {
 
 
     /**
+     * Player pays rent.
+     * @param rent
+     */
+
+    public void payRent(final int rent){
+        playerBalance -= rent;
+    }
+
+
+    /**
      * Method to calcuate amount for ticket price that player needs to pay.
      */
     public void payTicket() {
@@ -164,13 +168,6 @@ public class Player {
             payBanker(taxprice);
         }
 
-
-    }
-
-
-    public void buyHouse(int houseprice) {
-       payBanker(houseprice);
-       System.out.println("Player now owns the HOUSE space.");
 
     }
 }

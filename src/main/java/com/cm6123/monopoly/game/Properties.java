@@ -23,11 +23,10 @@ public class Properties extends MonopolyBoard {
      */
 
     private Player player2;
-
     /**
      * A new GameLogicHandler object is created.
      */
-    private  GameLogicHandlers statement;
+    private GameLogicHandlers statement;
 
 
     /**
@@ -49,19 +48,21 @@ public class Properties extends MonopolyBoard {
 
     /**
      * Gets oldkentprice.
+     *
      * @return oldkentprice.
      */
     public int getOldkentprice() {
         return oldkentprice;
     }
+
     /**
      * Gets oldkentRentprice.
+     *
      * @return oldkentRentprice.
      */
     public int getOldkentRentprice() {
         return oldkentRentprice;
     }
-
 
 
     /**
@@ -91,21 +92,35 @@ public class Properties extends MonopolyBoard {
                 statement.confirmOwnerShip();
 
 
-            } else if (getCurrentPlayerIsPlayer1() && currentSpace.getPayingrent()== null) {
-                player.payBanker(oldkentRentprice);
-                System.out.println("Player paid rent");
-                currentSpace.setPayingrent(player2);
-
-
-            } else if (!getCurrentPlayerIsPlayer1() && currentSpace.getPayingrent() == null) {
-                player.payBanker(oldkentRentprice);
-                System.out.println("Player paid rent");
-                currentSpace.setPayingrent(player1);
-
             }
 
 
         }
+    }
+
+    /**
+     * Method for player to pay rent on oldkent.
+     * @param player
+     */
+    public void payOldKentRent(final Player player) {
+        int currentPosition = player.getPlayerPosition();
+        BoardSpace currentSpace = getSpaces()[currentPosition];
+
+        if (currentSpace == BoardSpace.OLD_KENT_ROAD) {
+            if (getCurrentPlayerIsPlayer1() && currentSpace.getOwner() != player1 &&  currentSpace.getPayingrent() == null) {
+                player.payRent(oldkentRentprice);
+                System.out.println("Player paid rent");
+                currentSpace.setPayingrent(player2);
+
+
+            } else if (!getCurrentPlayerIsPlayer1() && currentSpace.getOwner() != player2 && currentSpace.getPayingrent() == null) {
+                player.payRent(oldkentRentprice);
+                System.out.println("Player paid rent");
+                currentSpace.setPayingrent(player1);
+
+            }
+        }
+
     }
 }
 

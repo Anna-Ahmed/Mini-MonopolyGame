@@ -90,7 +90,8 @@ public class MonopolyBoard {
         /**
          * @param player is used to set the owner of property spaces.
          */
-        public void setOwner(Player player) {
+        public void setOwner(final Player player) {
+
             this.owner = player;
         }
 
@@ -100,6 +101,7 @@ public class MonopolyBoard {
          */
 
         public Player getOwner() {
+
             return owner;
         }
 
@@ -124,7 +126,8 @@ public class MonopolyBoard {
          * @param player is used to set player paying rent.
          */
 
-        public void setPayingrent(Player player){
+        public void setPayingrent(final Player player){
+
             this.payingrent = player;
         }
     }
@@ -280,6 +283,7 @@ public class MonopolyBoard {
                 space.space2();
                 Properties oldkent = new Properties();
                 oldkent.buyOldKent(player);
+                oldkent.payOldKentRent(player);
                 break;
             case PALL_MALL:
                 space.space3();
