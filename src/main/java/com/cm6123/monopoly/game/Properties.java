@@ -51,18 +51,12 @@ public class Properties extends MonopolyBoard {
      *
      * @return oldkentprice.
      */
-    public int getOldkentprice() {
-        return oldkentprice;
-    }
 
     /**
      * Gets oldkentRentprice.
      *
      * @return oldkentRentprice.
      */
-    public int getOldkentRentprice() {
-        return oldkentRentprice;
-    }
 
 
     /**
