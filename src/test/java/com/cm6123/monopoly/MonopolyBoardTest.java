@@ -3,7 +3,7 @@ package com.cm6123.monopoly;
 import com.cm6123.monopoly.dice.TestDice;
 import com.cm6123.monopoly.game.MonopolyBoard;
 import com.cm6123.monopoly.game.Player;
-import com.cm6123.monopoly.game.Properties;
+import com.cm6123.monopoly.game.PropertiesAndRent;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -232,7 +232,7 @@ public class MonopolyBoardTest {
     @Test
     public void playerBuyOldKent(){
         MonopolyBoard board = new MonopolyBoard();
-        Properties oldkent = new Properties();
+        PropertiesAndRent oldkent = new PropertiesAndRent();
         Player player = board.getPlayer1();
 
 
@@ -267,7 +267,7 @@ public class MonopolyBoardTest {
     @Test
     public void playerPayRentOnOldKent(){
         MonopolyBoard board = new MonopolyBoard();
-        Properties oldkent = new Properties();
+        PropertiesAndRent oldkent = new PropertiesAndRent();
         Player player = board.getPlayer1();
 
 
@@ -300,7 +300,7 @@ public class MonopolyBoardTest {
     @Test
     public void player2BuyOldKent(){
         MonopolyBoard board = new MonopolyBoard();
-        Properties oldkent = new Properties();
+        PropertiesAndRent oldkent = new PropertiesAndRent();
         Player player = board.getPlayer2();
 
 
@@ -335,7 +335,7 @@ public class MonopolyBoardTest {
     @Test
     public void player2PayRentOnOldKent(){
         MonopolyBoard board = new MonopolyBoard();
-        Properties oldkent = new Properties();
+        PropertiesAndRent oldkent = new PropertiesAndRent();
         Player player = board.getPlayer2();
 
 
@@ -368,7 +368,7 @@ public class MonopolyBoardTest {
     @Test
     public void playerBuysPallMall(){
         MonopolyBoard board = new MonopolyBoard();
-        Properties pallmall = new Properties();
+        PropertiesAndRent pallmall = new PropertiesAndRent();
         Player player = board.getPlayer1();
 
 
@@ -402,7 +402,7 @@ public class MonopolyBoardTest {
     @Test
     public void playerBuysTheStrand(){
         MonopolyBoard board = new MonopolyBoard();
-        Properties thestrand = new Properties();
+        PropertiesAndRent thestrand = new PropertiesAndRent();
         Player player = board.getPlayer1();
 
 
@@ -437,7 +437,7 @@ public class MonopolyBoardTest {
     @Test
     public void playerPaysTheStrandRent(){
         MonopolyBoard board = new MonopolyBoard();
-        Properties thestrand = new Properties();
+        PropertiesAndRent thestrand = new PropertiesAndRent();
         Player player = board.getPlayer1();
 
 
@@ -471,7 +471,7 @@ public class MonopolyBoardTest {
     @Test
     public void playerPaysPallMallRent(){
         MonopolyBoard board = new MonopolyBoard();
-        Properties pallmall = new Properties();
+        PropertiesAndRent pallmall = new PropertiesAndRent();
         Player player = board.getPlayer1();
 
 
@@ -506,7 +506,7 @@ public class MonopolyBoardTest {
     @Test
     public void playerBuyLeicesterSquare(){
         MonopolyBoard board = new MonopolyBoard();
-        Properties ls= new Properties();
+        PropertiesAndRent ls= new PropertiesAndRent();
         Player player = board.getPlayer1();
 
 
@@ -541,7 +541,7 @@ public class MonopolyBoardTest {
     @Test
     public void playerPaysLeicesterRent(){
         MonopolyBoard board = new MonopolyBoard();
-        Properties ls = new Properties();
+        PropertiesAndRent ls = new PropertiesAndRent();
         Player player = board.getPlayer1();
 
 
@@ -576,7 +576,7 @@ public class MonopolyBoardTest {
     @Test
     public void playerbuysParkLane(){
         MonopolyBoard board = new MonopolyBoard();
-        Properties pl = new Properties();
+        PropertiesAndRent pl = new PropertiesAndRent();
         Player player = board.getPlayer1();
 
 
@@ -610,7 +610,7 @@ public class MonopolyBoardTest {
     @Test
     public void playerPaysParkLaneRent(){
         MonopolyBoard board = new MonopolyBoard();
-        Properties pl = new Properties();
+        PropertiesAndRent pl = new PropertiesAndRent();
         Player player = board.getPlayer1();
 
 

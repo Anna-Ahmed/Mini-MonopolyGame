@@ -2,7 +2,7 @@ package com.cm6123.monopoly.app;
 
 import com.cm6123.monopoly.game.MonopolyBoard;
 import com.cm6123.monopoly.game.Player;
-import com.cm6123.monopoly.game.Properties;
+import com.cm6123.monopoly.game.PropertiesAndRent;
 
 
 /**
@@ -21,7 +21,7 @@ public interface GameLogic {
      * Created property object.
      */
 
-    Properties PROPERTIES = new Properties();
+    PropertiesAndRent PROPERTIES = new PropertiesAndRent();
     /**
      * created  player object using Player class.
      */
