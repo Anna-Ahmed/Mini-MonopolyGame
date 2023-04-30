@@ -5,21 +5,45 @@ import com.cm6123.monopoly.app.GameLogicHandlers;
 public class Properties extends MonopolyBoard {
 
     /**
-     * @param oldkentprice is used to store integer for price of old kent road.
+     * price of old kent road.
      */
 
     private int oldkentprice;
 
 
+
+
     /**
-     * @param player1 is used to create player1 object.
+     * rent price of old kent road.
+     */
+    private int oldkentRentprice;
+
+
+    /**
+     * price of pall mall.
+     */
+
+
+
+    private int pallmallprice;
+
+    /**
+     * rent price of pall mall.
+     */
+
+
+    private int pallmallrentprice;
+
+
+    /**
+     *  player1 is used to create player1 object.
      */
 
 
     private Player player1;
 
     /**
-     * @param player2 is used to create player2 object.
+     *  player2 is used to create player2 object.
      */
 
     private Player player2;
@@ -30,34 +54,17 @@ public class Properties extends MonopolyBoard {
 
 
     /**
-     * @param oldkentRentprice is used to store rent price of old kent road.
-     */
-    private int oldkentRentprice;
-
-
-    /**
      * Constructor for properties class.
      */
     public Properties() {
         this.oldkentprice = 60;
         this.oldkentRentprice = 6;
+        this.pallmallprice = 140;
+        this.pallmallrentprice=14;
         this.statement = new GameLogicHandlers();
 
 
     }
-
-    /**
-     * Gets oldkentprice.
-     *
-     * @return oldkentprice.
-     */
-
-    /**
-     * Gets oldkentRentprice.
-     *
-     * @return oldkentRentprice.
-     */
-
 
     /**
      * Method to buy Old Kent and Pay rent.
@@ -73,17 +80,17 @@ public class Properties extends MonopolyBoard {
         if (currentSpace == BoardSpace.OLD_KENT_ROAD) {
             if (getCurrentPlayerIsPlayer1() && currentSpace.getOwner() == null && player.getPlayerBalance() >= oldkentprice) {
                 player.payBanker(oldkentprice);
-                statement.ownerOfHouse();
+                statement.ownerOfOldKent();
 
 
                 currentSpace.setOwner(player1);
-                statement.confirmOwnerShip();
+                statement.confirmOwnerShipOfOldKent();
 
             } else if (!getCurrentPlayerIsPlayer1() && currentSpace.getOwner() == null) {
                 player.payBanker(oldkentprice);
-                statement.ownerOfHouse();
+                statement.ownerOfOldKent();
                 currentSpace.setOwner(player2);
-                statement.confirmOwnerShip();
+                statement.confirmOwnershipOfPallMall();
 
 
             }
@@ -103,13 +110,71 @@ public class Properties extends MonopolyBoard {
         if (currentSpace == BoardSpace.OLD_KENT_ROAD) {
             if (getCurrentPlayerIsPlayer1() && currentSpace.getOwner() != player1 &&  currentSpace.getPayingrent() == null) {
                 player.payRent(oldkentRentprice);
-                System.out.println("Player paid rent");
+                statement.displaypaidrent();
                 currentSpace.setPayingrent(player2);
 
 
             } else if (!getCurrentPlayerIsPlayer1() && currentSpace.getOwner() != player2 && currentSpace.getPayingrent() == null) {
                 player.payRent(oldkentRentprice);
-                System.out.println("Player paid rent");
+               statement.displaypaidrent();
+                currentSpace.setPayingrent(player1);
+
+            }
+        }
+
+    }
+
+    /**
+     * Method to buy pall mall.
+     * @param player
+     */
+
+    public void buyPallMall(final Player player) {
+        player1 = getPlayer1();
+        player2 = getPlayer2();
+        int currentPosition = player.getPlayerPosition();
+        BoardSpace currentSpace = getSpaces()[currentPosition];
+
+        if (currentSpace == BoardSpace.PALL_MALL) {
+            if (getCurrentPlayerIsPlayer1() && currentSpace.getOwner() == null && player.getPlayerBalance() >= pallmallprice) {
+                player.payBanker(pallmallprice);
+                statement.ownerOfPallMall();
+
+
+                currentSpace.setOwner(player1);
+                statement.confirmOwnershipOfPallMall();
+
+            } else if (!getCurrentPlayerIsPlayer1() && currentSpace.getOwner() == null) {
+                player.payBanker(pallmallprice);
+                statement.ownerOfPallMall();
+                currentSpace.setOwner(player2);
+                statement.confirmOwnershipOfPallMall();
+
+
+            }
+
+
+        }
+    }
+
+    /**
+     * Method to pay rent on pall mall.
+     * @param player
+     */
+    public void payPallMallRent(final Player player) {
+        int currentPosition = player.getPlayerPosition();
+        BoardSpace currentSpace = getSpaces()[currentPosition];
+
+        if (currentSpace == BoardSpace.PALL_MALL) {
+            if (getCurrentPlayerIsPlayer1() && currentSpace.getOwner() != player1 &&  currentSpace.getPayingrent() == null) {
+                player.payRent(pallmallrentprice);
+                statement.displaypaidrent();
+                currentSpace.setPayingrent(player2);
+
+
+            } else if (!getCurrentPlayerIsPlayer1() && currentSpace.getOwner() != player2 && currentSpace.getPayingrent() == null) {
+                player.payRent(pallmallprice);
+                statement.displaypaidrent();
                 currentSpace.setPayingrent(player1);
 
             }

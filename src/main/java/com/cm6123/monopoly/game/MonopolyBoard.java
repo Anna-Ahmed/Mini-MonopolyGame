@@ -15,41 +15,41 @@ public class MonopolyBoard {
     /**
      * creating the board for the monopoly game.
      *
-     * @param boardsize is the size of the monopoly game.
+     *  boardsize is the size of the monopoly game.
      */
     private int boardsize = 16;
     /**
-     * @param spaces is an array of the Space object for spaces on the board.
+     * spaces is an array of the Space object for spaces on the board.
      */
     private BoardSpace[] spaces;
     /**
-     * @param dice is used to create an object of the Dice class.
+     *  dice is used to create an object of the Dice class.
      */
     private Dice dice;
     /**
-     * @param player1  is used to create an object player1 of the Player class.
+     * player1  is used to create an object player1 of the Player class.
      */
     private Player player1;
     /**
-     * @param player2  is used to create an object player2 of the Player class.
+     * player2  is used to create an object player2 of the Player class.
      */
     private Player player2;
     /**
-     * @param space is used to create a space object for the GamesboardSpacesHandler.
+     * space is used to create a space object for the GamesboardSpacesHandler.
      */
 
     private GamesBoardSpacesHandler space;
 
 
     /**
-     * @param logic is used to create a space object for the GameLogicHandler.
+     *  logic is used to create a space object for the GameLogicHandler.
      */
 
     private GameLogicHandlers logic;
 
 
     /**
-     * @param roll is used to stored an integer for dice roll value.
+     * roll is used to stored an integer for dice roll value.
      */
 
 
@@ -57,14 +57,14 @@ public class MonopolyBoard {
 
 
     /**
-     * @param banker is used to create a banker object for Banker class.
+     *  banker is used to create a banker object for Banker class.
      */
 
 
     private Banker banker;
 
     /**
-     * @param currentPlayerIsPlayer1 is inialziated as boolean for playerturns.
+     * the current player is player one stored as boolean variable.
      */
     private boolean currentPlayerIsPlayer1;
 
@@ -106,7 +106,7 @@ public class MonopolyBoard {
         }
 
         /**
-         * @param payingrent is used to created a player object of player who pays rent.
+         * payingrent is used to created a player object of player who pays rent.
          */
 
         private Player payingrent;
@@ -287,6 +287,9 @@ public class MonopolyBoard {
                 break;
             case PALL_MALL:
                 space.space3();
+                Properties pallmall = new Properties();
+                pallmall.buyPallMall(player);
+                pallmall.payPallMallRent(player);
                 break;
             case PADDIGTON:
                 space.space4();

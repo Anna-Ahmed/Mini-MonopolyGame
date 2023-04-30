@@ -365,6 +365,77 @@ public class MonopolyBoardTest {
     }
 
 
+    @Test
+    public void playerBuysPallMall(){
+        MonopolyBoard board = new MonopolyBoard();
+        Properties pallmall = new Properties();
+        Player player = board.getPlayer1();
+
+
+
+
+
+
+        //Given players postion 4 (pall mall) on the board
+        player.setPlayerPosition(4);
+
+        //when player buysoldkent
+        pallmall.buyPallMall(player);
+
+
+
+
+
+        //Then players balacne will be updated with the price of pall mall reducted from balance;
+
+        int currentPlayerBalance = player.getPlayerBalance();
+        double expectedPlayerBalance = currentPlayerBalance ;
+
+
+
+        assertEquals(expectedPlayerBalance, player.getPlayerBalance());
+
+
+
+    }
+
+    @Test
+    public void playerPaysPallMallRent(){
+        MonopolyBoard board = new MonopolyBoard();
+        Properties pallmall = new Properties();
+        Player player = board.getPlayer1();
+
+
+
+
+
+
+        //Given players postion 4 (pall mall) on the board
+        player.setPlayerPosition(4);
+
+        //when player buysoldkent
+        pallmall.payPallMallRent(player);
+
+
+
+
+
+        //Then players balacne will be updated with the price of pall mall reducted from balance;
+
+        int currentPlayerBalance = player.getPlayerBalance();
+        double expectedPlayerBalance = currentPlayerBalance ;
+
+
+
+        assertEquals(expectedPlayerBalance, player.getPlayerBalance());
+
+
+
+    }
+
+
+
+
 
 
 

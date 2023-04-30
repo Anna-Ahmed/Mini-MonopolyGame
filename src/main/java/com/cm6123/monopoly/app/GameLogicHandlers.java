@@ -55,7 +55,7 @@ public class GameLogicHandlers implements GameLogic {
      * Prints that player has purchased old kent.
      */
     @Override
-    public void ownerOfHouse() {
+    public void ownerOfOldKent() {
         System.out.println("Player purchased Old Kent Road");
 
     }
@@ -66,12 +66,28 @@ public class GameLogicHandlers implements GameLogic {
      */
 
     @Override
-    public void confirmOwnerShip() {
+    public void confirmOwnerShipOfOldKent() {
         System.out.println("Player now owns Old Kent Road");
 
     }
 
+    @Override
+    public void ownerOfPallMall() {
+        System.out.println("Player purchased Pall Mall");
 
+    }
+
+    @Override
+    public void confirmOwnershipOfPallMall() {
+        System.out.println("Player now owns Pall Mall");
+
+    }
+
+    @Override
+    public void displaypaidrent() {
+        System.out.println("Player has paid rent");
+
+    }
 
 
 }

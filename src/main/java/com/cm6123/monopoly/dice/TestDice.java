@@ -6,11 +6,11 @@ package com.cm6123.monopoly.dice;
  */
 public class TestDice extends Dice {
     /**
-     * @param values is an array  of integers.
+     * values  of dice  roll is an array  of integers.
      */
     private int[] valuesOfRoll;
     /**
-     * @param index initalized.
+     * index of dice value.
      */
     private int index;
 

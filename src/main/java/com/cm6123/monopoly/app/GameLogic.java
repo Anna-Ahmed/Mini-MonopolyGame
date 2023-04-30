@@ -35,16 +35,31 @@ public interface GameLogic {
 
 
     /**
-     * method for printing who purchased property .
+     * method for printing who purchased old kent .
      */
-     void ownerOfHouse();
+     void ownerOfOldKent();
 
 
     /**
-     * method for printing confirmation of who owns property .
+     * method for printing confirmation of who owns old kent .
      */
 
-     void confirmOwnerShip();
+     void confirmOwnerShipOfOldKent();
+
+    /**
+     * method for printing who purchased pall mall .
+     */
+     void ownerOfPallMall();
+
+    /**
+     * method for printing confirmation of who owns pall mall .
+     */
+
+     void confirmOwnershipOfPallMall();
+
+
+
+     void displaypaidrent();
 
 
 

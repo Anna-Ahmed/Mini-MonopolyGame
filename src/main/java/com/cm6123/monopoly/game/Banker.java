@@ -8,12 +8,12 @@ package com.cm6123.monopoly.game;
  public class Banker {
 
         /**
-         *@param bankerbalance is the amount banker has.
+         *bankerbalance is the amount banker has.
          */
         private int bankerbalance;
 
         /**
-         * @param player used to create a Player object.
+         * player used to create a Player object.
          */
 
         private Player player;
@@ -21,8 +21,6 @@ package com.cm6123.monopoly.game;
          * Constructor.
          *  bankerbalance is set to 5000.
          */
-
-        //private  MonopolyBoard board;
         public Banker(){
 
                 bankerbalance = 5000;

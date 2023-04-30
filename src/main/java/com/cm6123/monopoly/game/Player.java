@@ -12,47 +12,47 @@ public class Player {
 
     // Instance variables
     /**
-     * @param dice is used to create an object for Dice class.
+     * dice is used to create an object for Dice class.
      */
     private Dice dice;
     /**
-     * @param playerPosition.
+     *  the postion of player .
      */
     private int playerPosition;
     /**
-     * @param playerBalance.
+     * the players balance.
      */
     private int playerBalance;
 
     /**
-     * @param ticketprice used to store the value of ticket price for stations.
+     * the value of ticket price for stations.
      */
 
     private int ticketPrice;
 
     /**
-     * @param rollValue1 is used to store roll1 value of the dice.
+     *  first roll value of the dice.
      */
     private int rollValue1;
 
     /**
-     * @param rollValue2 is used to store roll2 value of dice.
+     * second roll value of dice.
      */
     private int rollValue2;
 
     /**
-     * @param taxprice used to store value of tax.
+     * value of tax.
      */
     private int taxprice;
 
     /**
-     * @param board used to create a monopoly board object.
+     * board used to create a monopoly board object.
      */
 
     private MonopolyBoard board;
 
     /**
-     * @paraam banker used to create banker object for Banker class.
+     * banker used to create banker object for Banker class.
      */
     private Banker banker;
     /**
