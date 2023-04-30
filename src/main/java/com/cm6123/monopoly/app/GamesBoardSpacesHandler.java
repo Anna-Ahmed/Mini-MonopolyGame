@@ -72,7 +72,7 @@ public class GamesBoardSpacesHandler  implements GameBoardSpaces{
 
     @Override
     public void space8() {
-        System.out.println("You landed on Lecister Square");
+        System.out.println("You landed on Leicester Square");
 
 
     }

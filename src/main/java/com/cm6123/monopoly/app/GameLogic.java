@@ -2,7 +2,7 @@ package com.cm6123.monopoly.app;
 
 import com.cm6123.monopoly.game.MonopolyBoard;
 import com.cm6123.monopoly.game.Player;
-
+import com.cm6123.monopoly.game.Properties;
 
 
 /**
@@ -15,6 +15,13 @@ public interface GameLogic {
      */
 
     MonopolyBoard BOARD = new MonopolyBoard();
+
+
+    /**
+     * Created property object.
+     */
+
+    Properties PROPERTIES = new Properties();
     /**
      * created  player object using Player class.
      */
@@ -31,7 +38,21 @@ public interface GameLogic {
      */
      void player2Turn();
 
-    //public void Ask();
+    /**
+     * method to ask player if they want to buy property.
+     */
+     void ask();
+
+    /**
+     * method for asking player 1s name.
+     */
+     void player1Name();
+
+    /**
+     * method for asking player 2s name.
+     */
+
+    void player2Name();
 
 
     /**
@@ -58,8 +79,61 @@ public interface GameLogic {
      void confirmOwnershipOfPallMall();
 
 
+    /**
+     * method for printing player paid rent.
+     */
 
      void displaypaidrent();
+
+
+    /**
+     * method for printing player has no funds.
+     */
+     void dipslayNoFunds();
+
+    /**
+     * method for printing player has no funds to pay rent.
+     */
+
+    void dipslayNoFundsforrent();
+
+
+
+    /**
+     * method for printing who purchased the strand .
+     */
+    void ownerOfTheStrand();
+
+    /**
+     * method for printing confirmation of who owns the strand .
+     */
+
+    void confirmOwnershipOfTheStrand();
+
+
+    /**
+     * method for printing who purchased parklane.
+     */
+    void ownerOfParkLane();
+
+    /**
+     * method for printing confirmation of who owns parklane.
+     */
+
+    void confirmOwnershipOfParkLane();
+
+
+
+    /**
+     * method for printing who purchased leicester square.
+     */
+    void ownerOfLeicesterSquare();
+
+    /**
+     * method for printing confirmation of who owns leicester square .
+     */
+
+    void confirmOwnershipOfLeicesterSquare();
 
 
 

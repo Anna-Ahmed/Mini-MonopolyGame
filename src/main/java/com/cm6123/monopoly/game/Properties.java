@@ -33,6 +33,47 @@ public class Properties extends MonopolyBoard {
 
 
     private int pallmallrentprice;
+    /**
+     * price of the strand.
+     */
+
+
+
+    private int thestrandprice;
+
+    /**
+     * rent price of the strand.
+     */
+
+
+
+    private int thestrandrentprice;
+
+    /**
+     * price of lecister square.
+     */
+
+    private int lecistersquareprice;
+
+
+    /**
+     *  rent price of parklane.
+     */
+
+    private int lecistersquarerentprice;
+
+    /**
+     * price of parklane.
+     */
+
+    private int parklaneprice;
+
+    /**
+     * rent price of parklane.
+     */
+
+
+    private int parklanerentprice;
 
 
     /**
@@ -61,13 +102,19 @@ public class Properties extends MonopolyBoard {
         this.oldkentRentprice = 6;
         this.pallmallprice = 140;
         this.pallmallrentprice=14;
+        this.thestrandprice = 220;
+        this.thestrandrentprice = 22;
+        this.lecistersquareprice=260;
+        this.lecistersquarerentprice=26;
+        this.parklaneprice = 350;
+        this.pallmallrentprice = 35;
         this.statement = new GameLogicHandlers();
 
 
     }
 
     /**
-     * Method to buy Old Kent and Pay rent.
+     * Method to buy Old Kent.
      *
      * @param player The Player object representing the player who wants to buy the house.
      */
@@ -91,11 +138,11 @@ public class Properties extends MonopolyBoard {
                 statement.ownerOfOldKent();
                 currentSpace.setOwner(player2);
                 statement.confirmOwnershipOfPallMall();
+                //   } else if (player.getPlayerBalance() < oldkentprice)
+                //     statement.dipslayNoFunds();
 
-
+                //}
             }
-
-
         }
     }
 
@@ -119,6 +166,8 @@ public class Properties extends MonopolyBoard {
                statement.displaypaidrent();
                 currentSpace.setPayingrent(player1);
 
+            }else if(player.getPlayerBalance() < oldkentRentprice){
+                statement.dipslayNoFundsforrent();
             }
         }
 
@@ -149,11 +198,10 @@ public class Properties extends MonopolyBoard {
                 statement.ownerOfPallMall();
                 currentSpace.setOwner(player2);
                 statement.confirmOwnershipOfPallMall();
-
+            }else if (player.getPlayerBalance() < pallmallprice) {
+                statement.dipslayNoFunds();
 
             }
-
-
         }
     }
 
@@ -177,9 +225,195 @@ public class Properties extends MonopolyBoard {
                 statement.displaypaidrent();
                 currentSpace.setPayingrent(player1);
 
+            }else if(player.getPlayerBalance() < pallmallrentprice) {
+                statement.dipslayNoFundsforrent();
             }
         }
 
+    }
+
+    /**
+     * Method to buy the strand.
+     * @param player
+     */
+
+    public void buyTheStrand(final Player player) {
+        player1 = getPlayer1();
+        player2 = getPlayer2();
+        int currentPosition = player.getPlayerPosition();
+        BoardSpace currentSpace = getSpaces()[currentPosition];
+
+        if (currentSpace == BoardSpace.THE_STRAND) {
+            if (getCurrentPlayerIsPlayer1() && currentSpace.getOwner() == null && player.getPlayerBalance() >= thestrandprice) {
+                player.payBanker(thestrandprice);
+                statement.ownerOfTheStrand();
+
+
+                currentSpace.setOwner(player1);
+                statement.confirmOwnershipOfTheStrand();
+
+            } else if (!getCurrentPlayerIsPlayer1() && currentSpace.getOwner() == null) {
+                player.payBanker(thestrandprice);
+                statement.ownerOfTheStrand();
+                currentSpace.setOwner(player2);
+                statement.confirmOwnershipOfTheStrand();
+
+
+            }else if (player.getPlayerBalance() < thestrandprice) {
+                statement.dipslayNoFunds();
+            }
+
+        }
+    }
+
+    /**
+     * Method to pay rent on The Strand.
+     * @param player
+     */
+    public void payTheStrandRent(final Player player) {
+        int currentPosition = player.getPlayerPosition();
+        BoardSpace currentSpace = getSpaces()[currentPosition];
+
+        if (currentSpace == BoardSpace.THE_STRAND) {
+            if (getCurrentPlayerIsPlayer1() && currentSpace.getOwner() != player1 && currentSpace.getPayingrent() == null) {
+                player.payRent(thestrandrentprice);
+                statement.displaypaidrent();
+                currentSpace.setPayingrent(player2);
+
+
+            } else if (!getCurrentPlayerIsPlayer1() && currentSpace.getOwner() != player2 && currentSpace.getPayingrent() == null) {
+                player.payRent(thestrandrentprice);
+                statement.displaypaidrent();
+                currentSpace.setPayingrent(player1);
+
+            } else if (player.getPlayerBalance() < thestrandrentprice) {
+                statement.dipslayNoFundsforrent();
+            }
+        }
+    }
+
+
+    /**
+     * Method to buy Leister Square.
+     *
+     * @param player The Player object representing the player who wants to buy the house.
+     */
+    public void buyLeicesterSquare(final Player player) {
+        player1 = getPlayer1();
+        player2 = getPlayer2();
+        int currentPosition = player.getPlayerPosition();
+        BoardSpace currentSpace = getSpaces()[currentPosition];
+
+        if (currentSpace == BoardSpace.LEICESTER_SQUARE) {
+            if (getCurrentPlayerIsPlayer1() && currentSpace.getOwner() == null && player.getPlayerBalance() >= lecistersquareprice) {
+                player.payBanker(lecistersquareprice);
+                statement.ownerOfLeicesterSquare();
+
+
+                currentSpace.setOwner(player1);
+                statement.confirmOwnershipOfLeicesterSquare();
+
+            } else if (!getCurrentPlayerIsPlayer1() && currentSpace.getOwner() == null) {
+                player.payBanker(lecistersquareprice);
+                statement.ownerOfLeicesterSquare();
+                currentSpace.setOwner(player2);
+                statement.confirmOwnershipOfLeicesterSquare();
+
+
+            } else if(player.getPlayerBalance() < lecistersquareprice) {
+                statement.dipslayNoFunds();
+            }
+
+        }
+    }
+
+    /**
+     * Method for player to pay rent on Leicester Square.
+     * @param player
+     */
+    public void payLeicesterSquareRent(final Player player) {
+        int currentPosition = player.getPlayerPosition();
+        BoardSpace currentSpace = getSpaces()[currentPosition];
+
+        if (currentSpace == BoardSpace.LEICESTER_SQUARE) {
+            if (getCurrentPlayerIsPlayer1() && currentSpace.getOwner() != player1 &&  currentSpace.getPayingrent() == null) {
+                player.payRent(lecistersquarerentprice);
+                statement.displaypaidrent();
+                currentSpace.setPayingrent(player2);
+
+
+            } else if (!getCurrentPlayerIsPlayer1() && currentSpace.getOwner() != player2 && currentSpace.getPayingrent() == null) {
+                player.payRent(lecistersquarerentprice);
+                statement.displaypaidrent();
+                currentSpace.setPayingrent(player1);
+
+            }else if(player.getPlayerBalance() < lecistersquarerentprice){
+                statement.dipslayNoFundsforrent();
+            }
+        }
+
+    }
+
+
+
+    /**
+     * Method to buy parklane.
+     * @param player
+     */
+
+    public void buyParkLane(final Player player) {
+        player1 = getPlayer1();
+        player2 = getPlayer2();
+        int currentPosition = player.getPlayerPosition();
+        BoardSpace currentSpace = getSpaces()[currentPosition];
+
+        if (currentSpace == BoardSpace.PARK_LANE) {
+            if (getCurrentPlayerIsPlayer1() && currentSpace.getOwner() == null && player.getPlayerBalance() >= parklaneprice) {
+                player.payBanker(parklaneprice);
+                statement.ownerOfParkLane();
+
+
+                currentSpace.setOwner(player1);
+                statement.confirmOwnershipOfParkLane();
+
+            } else if (!getCurrentPlayerIsPlayer1() && currentSpace.getOwner() == null) {
+                player.payBanker(parklaneprice);
+                statement.ownerOfParkLane();
+                currentSpace.setOwner(player2);
+                statement.confirmOwnershipOfParkLane();
+
+
+            }else if (player.getPlayerBalance() < parklaneprice) {
+                statement.dipslayNoFunds();
+            }
+
+        }
+    }
+
+    /**
+     * Method to pay rent on park lane.
+     * @param player
+     */
+    public void payParkLaneRent(final Player player) {
+        int currentPosition = player.getPlayerPosition();
+        BoardSpace currentSpace = getSpaces()[currentPosition];
+
+        if (currentSpace == BoardSpace.PARK_LANE) {
+            if (getCurrentPlayerIsPlayer1() && currentSpace.getOwner() != player1 && currentSpace.getPayingrent() == null) {
+                player.payRent(parklanerentprice);
+                statement.displaypaidrent();
+                currentSpace.setPayingrent(player2);
+
+
+            } else if (!getCurrentPlayerIsPlayer1() && currentSpace.getOwner() != player2 && currentSpace.getPayingrent() == null) {
+                player.payRent(parklaneprice);
+                statement.displaypaidrent();
+                currentSpace.setPayingrent(player1);
+
+            } else if (player.getPlayerBalance() < parklanerentprice) {
+                statement.dipslayNoFundsforrent();
+            }
+        }
     }
 }
 

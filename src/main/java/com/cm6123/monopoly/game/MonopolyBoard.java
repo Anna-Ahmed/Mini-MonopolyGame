@@ -81,7 +81,7 @@ public class MonopolyBoard {
         /**
          * Set of spaces definied as enums.
          */
-        HOME, ROAD, OLD_KENT_ROAD, PALL_MALL, PADDIGTON, THE_STRAND, TAX_OFFICE, WATERLOO, LECISTER_SQUARE, PARK_LANE;
+        HOME, ROAD, OLD_KENT_ROAD, PALL_MALL, PADDIGTON, THE_STRAND, TAX_OFFICE, WATERLOO, LEICESTER_SQUARE, PARK_LANE;
 
         /**
          * using Player class to create a owner object.
@@ -156,7 +156,7 @@ public class MonopolyBoard {
             } else if (i % 16 == 11) {
                 spaces[i] = BoardSpace.WATERLOO;
             } else if (i % 16 == 12) {
-                spaces[i] = BoardSpace.LECISTER_SQUARE;
+                spaces[i] = BoardSpace.LEICESTER_SQUARE;
             } else if (i % 16 == 14) {
                 spaces[i] = BoardSpace.PARK_LANE;
 
@@ -282,8 +282,9 @@ public class MonopolyBoard {
             case OLD_KENT_ROAD:
                 space.space2();
                 Properties oldkent = new Properties();
-                oldkent.buyOldKent(player);
+               // oldkent.buyOldKent(player);
                 oldkent.payOldKentRent(player);
+
                 break;
             case PALL_MALL:
                 space.space3();
@@ -297,6 +298,9 @@ public class MonopolyBoard {
                 break;
             case THE_STRAND:
                 space.space5();
+                Properties thestrand =new Properties();
+                thestrand.buyTheStrand(player);
+                thestrand.payTheStrandRent(player);
 
                 break;
             case TAX_OFFICE:
@@ -308,11 +312,17 @@ public class MonopolyBoard {
 
                 player.payTicket();
                 break;
-            case LECISTER_SQUARE:
+            case LEICESTER_SQUARE:
                 space.space8();
+                Properties ls = new Properties();
+                ls.buyLeicesterSquare(player);
+                ls.payLeicesterSquareRent(player);
                 break;
             case PARK_LANE:
                 space.space9();
+                Properties parklane = new Properties();
+                parklane.buyParkLane(player);
+                parklane.payParkLaneRent(player);
                 break;
             default:
                 space.space10();
@@ -320,7 +330,7 @@ public class MonopolyBoard {
         }
 
 
-        System.out.println("Player" + (currentPlayerIsPlayer1 ? " 1 " : " 2 ") + " Balance: " + player.getPlayerBalance());
+        System.out.println("Player" + (currentPlayerIsPlayer1 ? " 1 " : " 2 ") + " Balance: £" + player.getPlayerBalance());
         currentPlayerIsPlayer1 = !currentPlayerIsPlayer1;
         return player.getPlayerBalance() <= 0;
 
@@ -332,25 +342,36 @@ public class MonopolyBoard {
      * Method for playing monoploy until game is over.
      */
     public void play() {
+        Properties oldkent = new Properties();
 
+
+        logic.player1Name();
+        logic.player2Name();
         while (true) {
+
+
+
             logic.player1Turn();
 
-            boolean gameover = playTurn(player1);
-            if (gameover) {
-                System.out.println("Gameover");
+
+            boolean playerbankrupt = playTurn(player1);
+            if (playerbankrupt) {
+                System.out.println("Player 1 is Bankrupt. Game Over!");
+                return;
 
 
+            }else if(spaces[player1.getPlayerPosition()] == BoardSpace.OLD_KENT_ROAD){
+                logic.ask();
+                oldkent.buyOldKent(player1);
             }
-
             logic.player2Turn();
 
 
 
 
-            gameover = playTurn(player2);
-            if (gameover) {
-                System.out.println("Game Over");
+            playerbankrupt = playTurn(player2);
+            if (playerbankrupt) {
+                System.out.println(" Player 2 is Bankrupt. Game Over");
                 return;
             }
 

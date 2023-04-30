@@ -47,7 +47,7 @@ public class MonopolyBoardTest {
                 Arguments.of(new int[]{6, 2}, MonopolyBoard.BoardSpace.THE_STRAND),
                 Arguments.of(new int[]{5, 4}, MonopolyBoard.BoardSpace.ROAD),
                 Arguments.of(new int[]{5, 5}, MonopolyBoard.BoardSpace.TAX_OFFICE),
-                Arguments.of(new int[]{6, 6}, MonopolyBoard.BoardSpace.LECISTER_SQUARE)
+                Arguments.of(new int[]{6, 6}, MonopolyBoard.BoardSpace.LEICESTER_SQUARE)
 
         );
 
@@ -76,7 +76,7 @@ public class MonopolyBoardTest {
 
     private static Stream<Arguments> LandingOnBoardSpaces2() {
         return Stream.of(
-                Arguments.of(new int[]{1, 1}, MonopolyBoard.BoardSpace.LECISTER_SQUARE),
+                Arguments.of(new int[]{1, 1}, MonopolyBoard.BoardSpace.LEICESTER_SQUARE),
                 Arguments.of(new int[]{1, 2}, MonopolyBoard.BoardSpace.ROAD),
                 Arguments.of(new int[]{3, 1}, MonopolyBoard.BoardSpace.PARK_LANE),
                 Arguments.of(new int[]{4, 2}, MonopolyBoard.BoardSpace.HOME),
@@ -400,9 +400,9 @@ public class MonopolyBoardTest {
     }
 
     @Test
-    public void playerPaysPallMallRent(){
+    public void playerBuysTheStrand(){
         MonopolyBoard board = new MonopolyBoard();
-        Properties pallmall = new Properties();
+        Properties thestrand = new Properties();
         Player player = board.getPlayer1();
 
 
@@ -410,11 +410,11 @@ public class MonopolyBoardTest {
 
 
 
-        //Given players postion 4 (pall mall) on the board
-        player.setPlayerPosition(4);
+        //Given players postion 8 (the strand) on the board
+        player.setPlayerPosition(8);
 
         //when player buysoldkent
-        pallmall.payPallMallRent(player);
+        thestrand.buyTheStrand(player);
 
 
 
@@ -433,6 +433,213 @@ public class MonopolyBoardTest {
 
     }
 
+
+    @Test
+    public void playerPaysTheStrandRent(){
+        MonopolyBoard board = new MonopolyBoard();
+        Properties thestrand = new Properties();
+        Player player = board.getPlayer1();
+
+
+
+
+
+
+        //Given players postion 8 (the strand) on the board
+        player.setPlayerPosition(8);
+
+        //when player buysoldkent
+        thestrand.payTheStrandRent(player);;
+
+
+
+
+
+        //Then players balacne will be updated with the price of pall mall reducted from balance;
+
+        int currentPlayerBalance = player.getPlayerBalance();
+        double expectedPlayerBalance = currentPlayerBalance ;
+
+
+
+        assertEquals(expectedPlayerBalance, player.getPlayerBalance());
+
+
+
+    }
+
+    @Test
+    public void playerPaysPallMallRent(){
+        MonopolyBoard board = new MonopolyBoard();
+        Properties pallmall = new Properties();
+        Player player = board.getPlayer1();
+
+
+
+
+
+
+        //Given players postion 4 (pall mall) on the board
+        player.setPlayerPosition(4);
+
+        //when player buysoldkent
+        pallmall.buyPallMall(player);
+
+
+
+
+
+        //Then players balacne will be updated with the price of pall mall reducted from balance;
+
+        int currentPlayerBalance = player.getPlayerBalance();
+        double expectedPlayerBalance = currentPlayerBalance ;
+
+
+
+        assertEquals(expectedPlayerBalance, player.getPlayerBalance());
+
+
+
+    }
+
+
+    @Test
+    public void playerBuyLeicesterSquare(){
+        MonopolyBoard board = new MonopolyBoard();
+        Properties ls= new Properties();
+        Player player = board.getPlayer1();
+
+
+
+
+
+
+        //Given players postion 12 (leicester square) on the board
+        player.setPlayerPosition(12);
+
+        //when player buysoldkent
+        ls.buyLeicesterSquare(player);
+
+
+
+
+
+        //Then players balacne will be updated with the price of pall mall reducted from balance;
+
+        int currentPlayerBalance = player.getPlayerBalance();
+        double expectedPlayerBalance = currentPlayerBalance ;
+
+
+
+        assertEquals(expectedPlayerBalance, player.getPlayerBalance());
+
+
+
+    }
+
+
+    @Test
+    public void playerPaysLeicesterRent(){
+        MonopolyBoard board = new MonopolyBoard();
+        Properties ls = new Properties();
+        Player player = board.getPlayer1();
+
+
+
+
+
+
+        //Given players postion 12(leicester square) on the board
+        player.setPlayerPosition(12);
+
+        //when player buysoldkent
+        ls.payLeicesterSquareRent(player);
+
+
+
+
+
+        //Then players balacne will be updated with the price of pall mall reducted from balance;
+
+        int currentPlayerBalance = player.getPlayerBalance();
+        double expectedPlayerBalance = currentPlayerBalance ;
+
+
+
+        assertEquals(expectedPlayerBalance, player.getPlayerBalance());
+
+
+
+    }
+
+
+    @Test
+    public void playerbuysParkLane(){
+        MonopolyBoard board = new MonopolyBoard();
+        Properties pl = new Properties();
+        Player player = board.getPlayer1();
+
+
+
+
+
+
+        //Given players postion 14(park lane) on the board
+        player.setPlayerPosition(14);
+
+        //when player buys park lane
+        pl.buyParkLane(player);
+
+
+
+
+
+        //Then players balacne will be updated with the price of pall mall reducted from balance;
+
+        int currentPlayerBalance = player.getPlayerBalance();
+        double expectedPlayerBalance = currentPlayerBalance ;
+
+
+
+        assertEquals(expectedPlayerBalance, player.getPlayerBalance());
+
+
+
+    }
+
+    @Test
+    public void playerPaysParkLaneRent(){
+        MonopolyBoard board = new MonopolyBoard();
+        Properties pl = new Properties();
+        Player player = board.getPlayer1();
+
+
+
+
+
+
+        //Given players postion 14 (park lane) on the board
+        player.setPlayerPosition(14);
+
+        //when player  pays rent on parklane
+        pl.payParkLaneRent(player);
+
+
+
+
+
+        //Then players balance will be updated with the price of pall mall reducted from balance;
+
+        int currentPlayerBalance = player.getPlayerBalance();
+        double expectedPlayerBalance = currentPlayerBalance ;
+
+
+
+        assertEquals(expectedPlayerBalance, player.getPlayerBalance());
+
+
+
+    }
 
 
 
