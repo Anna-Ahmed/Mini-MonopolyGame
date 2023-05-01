@@ -14,8 +14,8 @@ public class MonopolyBoard {
 
     /**
      * creating the board for the monopoly game.
-     *
-     *  boardsize is the size of the monopoly game.
+     * <p>
+     * boardsize is the size of the monopoly game.
      */
     private int boardsize = 16;
     /**
@@ -23,7 +23,7 @@ public class MonopolyBoard {
      */
     private BoardSpace[] spaces;
     /**
-     *  dice is used to create an object of the Dice class.
+     * dice is used to create an object of the Dice class.
      */
     private Dice dice;
     /**
@@ -42,7 +42,7 @@ public class MonopolyBoard {
 
 
     /**
-     *  logic is used to create a space object for the GameLogicHandler.
+     * logic is used to create a space object for the GameLogicHandler.
      */
 
     private GameLogicHandlers logic;
@@ -57,7 +57,7 @@ public class MonopolyBoard {
 
 
     /**
-     *  banker is used to create a banker object for Banker class.
+     * banker is used to create a banker object for Banker class.
      */
 
 
@@ -67,10 +67,6 @@ public class MonopolyBoard {
      * the current player is player one stored as boolean variable.
      */
     private boolean currentPlayerIsPlayer1;
-
-
-
-
 
 
     /**
@@ -87,6 +83,7 @@ public class MonopolyBoard {
          * using Player class to create a owner object.
          */
         private Player owner;
+
         /**
          * @param player is used to set the owner of property spaces.
          */
@@ -96,7 +93,6 @@ public class MonopolyBoard {
         }
 
         /**
-         *
          * @return owner is used to get the owner of space.
          */
 
@@ -105,32 +101,8 @@ public class MonopolyBoard {
             return owner;
         }
 
-        /**
-         * payingrent is used to created a player object of player who pays rent.
-         */
-
-        private Player payingrent;
-
-
-        /**
-         *
-         * @return paying rent is used to get the player paying rent.
-         */
-
-        public Player getPayingrent(){
-            return payingrent;
-        }
-
-        /**
-         *
-         * @param player is used to set player paying rent.
-         */
-
-        public void setPayingrent(final Player player){
-
-            this.payingrent = player;
-        }
     }
+
 
 
     /**
@@ -141,7 +113,7 @@ public class MonopolyBoard {
         for (int i = 0; i < boardsize; i++) { // looping through the boardsize
             if (i % 16 == 0) {   // assigning  positions to the board spaces on the board
                 spaces[i] = BoardSpace.HOME;
-            } else if (i % 16 == 1 || i % 16 == 2 || i % 16 == 5 || i % 16 == 7 || i % 16 == 9 || i % 16 == 13 || i % 16 == 15 || i % 16 == 16)   {
+            } else if (i % 16 == 1 || i % 16 == 2 || i % 16 == 5 || i % 16 == 7 || i % 16 == 9 || i % 16 == 13 || i % 16 == 15 || i % 16 == 16) {
                 spaces[i] = BoardSpace.ROAD;
             } else if (i % 16 == 3) {
                 spaces[i] = BoardSpace.OLD_KENT_ROAD;
@@ -173,13 +145,7 @@ public class MonopolyBoard {
         this.logic = new GameLogicHandlers();
 
 
-
-
-
     }
-
-
-
 
 
     /**
@@ -188,6 +154,9 @@ public class MonopolyBoard {
      * @param aDice doesn't return param
      */
     public void setDice(final Dice aDice) {
+        if(aDice == null){
+            throw new IllegalArgumentException("Dice cannot be null");
+        }
         this.dice = aDice;     // setting the dice for this board.
     }
 
@@ -222,18 +191,20 @@ public class MonopolyBoard {
 
     /**
      * Gets player 2.
+     *
      * @return player 2.
      */
 
-    public Player getPlayer2(){
+    public Player getPlayer2() {
         return player2;
     }
 
     /**
      * boolean created to get current player equal  to player1.
+     *
      * @return currentPlayerisPlayer1.
      */
-    public boolean getCurrentPlayerIsPlayer1(){
+    public boolean getCurrentPlayerIsPlayer1() {
         return currentPlayerIsPlayer1;
 
     }
@@ -256,14 +227,14 @@ public class MonopolyBoard {
         currentPosition = (currentPosition + roll) % boardsize;
         player.setPlayerPosition(currentPosition);// setting the players position to the current position on the board.
 
-
-
+        if(currentPosition<0 || currentPosition >= boardsize){
+            throw new IllegalArgumentException("Player is out of bounds");
+        }
 
         player.setCurrentRoll(roll1, roll2);
 
 
         BoardSpace currentSpace = spaces[currentPosition];
-
 
 
         switch (currentSpace) {
@@ -281,14 +252,15 @@ public class MonopolyBoard {
 
             case OLD_KENT_ROAD:
                 space.space2();
-                PropertiesAndRent oldkent = new PropertiesAndRent();
+                Properties oldkent = new Properties();
                 oldkent.buyOldKent(player);
+
 
 
                 break;
             case PALL_MALL:
                 space.space3();
-                PropertiesAndRent pallmall = new PropertiesAndRent();
+                Properties pallmall = new Properties();
                 pallmall.buyPallMall(player);
 
                 break;
@@ -298,7 +270,7 @@ public class MonopolyBoard {
                 break;
             case THE_STRAND:
                 space.space5();
-                PropertiesAndRent thestrand =new PropertiesAndRent();
+                Properties thestrand = new Properties();
                 thestrand.buyTheStrand(player);
 
 
@@ -314,12 +286,12 @@ public class MonopolyBoard {
                 break;
             case LEICESTER_SQUARE:
                 space.space8();
-                PropertiesAndRent ls = new PropertiesAndRent();
+                Properties ls = new Properties();
                 ls.buyLeicesterSquare(player);
                 break;
             case PARK_LANE:
                 space.space9();
-                PropertiesAndRent parklane = new PropertiesAndRent();
+                Properties parklane = new Properties();
                 parklane.buyParkLane(player);
                 break;
             default:
@@ -340,13 +312,12 @@ public class MonopolyBoard {
      * Method for playing monoploy until game is over.
      */
     public void play() {
-        //Properties oldkent = new Properties();
+        Properties oldkent = new Properties();
 
 
         logic.player1Name();
         logic.player2Name();
         while (true) {
-
 
 
             logic.player1Turn();
@@ -357,25 +328,19 @@ public class MonopolyBoard {
                 System.out.println("Player 1 is Bankrupt. Game Over!");
                 return;
 
-
-           // }else if(spaces[player1.getPlayerPosition()] == BoardSpace.OLD_KENT_ROAD){
-             //   logic.ask();
-               // oldkent.buyOldKent(player1);
             }
             logic.player2Turn();
-
-
 
 
             playerbankrupt = playTurn(player2);
             if (playerbankrupt) {
                 System.out.println(" Player 2 is Bankrupt. Game Over");
                 return;
-            }
 
             }
         }
 
     }
+}
 
 

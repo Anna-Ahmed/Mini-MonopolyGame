@@ -2,7 +2,7 @@ package com.cm6123.monopoly.game;
 
 import com.cm6123.monopoly.app.GameLogicHandlers;
 
-public class PropertiesAndRent extends MonopolyBoard {
+public class Properties extends MonopolyBoard {
 
     /**
      * price of old kent road.
@@ -56,7 +56,7 @@ public class PropertiesAndRent extends MonopolyBoard {
     /**
      * Constructor for properties class.
      */
-    public PropertiesAndRent() {
+    public Properties() {
         this.oldkentprice = 60;
         this.pallmallprice = 140;
         this.thestrandprice = 220;

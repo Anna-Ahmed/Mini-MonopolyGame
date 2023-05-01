@@ -2,10 +2,13 @@ package com.cm6123.monopoly.app;
 
 
 import com.cm6123.monopoly.game.MonopolyBoard;
+import com.cm6123.monopoly.game.Properties;
 
 import java.util.Scanner;
 
 public class GameLogicHandlers implements GameLogic {
+
+
 
     /**
      * Asks player 1 to roll dice for their turn.
@@ -50,6 +53,8 @@ if(currentSpace.getOwner() == null) {
 
         if (input.equals("Y")) {
             currentSpace.setOwner(PLAYER);
+        } else if (input.equals("Y") && PLAYER.getPlayerBalance() < 60) {
+            System.out.print("You dont have enough to purchase this property");
         } else if (input.equals("N")) {
             currentSpace.setOwner(null);
             System.out.println("You chose not to buy this property");

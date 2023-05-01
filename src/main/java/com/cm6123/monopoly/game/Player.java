@@ -16,7 +16,7 @@ public class Player {
      */
     private Dice dice;
     /**
-     *  the postion of player .
+     * the postion of player .
      */
     private int playerPosition;
     /**
@@ -31,7 +31,7 @@ public class Player {
     private int ticketPrice;
 
     /**
-     *  first roll value of the dice.
+     * first roll value of the dice.
      */
     private int rollValue1;
 
@@ -55,6 +55,7 @@ public class Player {
      * banker used to create banker object for Banker class.
      */
     private Banker banker;
+
     /**
      * Constructor created for player.
      */
@@ -79,6 +80,14 @@ public class Player {
         return playerPosition;
     }
 
+    /**
+     * Sets player balance.
+     * @param newplayerBalance
+     */
+
+    public void setPlayerBalance(final int newplayerBalance) {
+        this.playerBalance = newplayerBalance;
+    }
 
     /**
      * Sets players position.
@@ -99,6 +108,7 @@ public class Player {
     public int getPlayerBalance() {
         return playerBalance;
     }
+
     /**
      * Banker gives money  to player.
      *
@@ -137,10 +147,11 @@ public class Player {
 
     /**
      * Player pays rent.
+     *
      * @param rent
      */
 
-    public void payRent(final int rent){
+    public void payRent(final int rent) {
         playerBalance -= rent;
     }
 
@@ -150,8 +161,14 @@ public class Player {
      */
     public void payTicket() {
         ticketPrice = 10 * (rollValue1 + rollValue2);  //Ticket fee is 10 * the value of last roll
-        payBanker(ticketPrice);  // player then pays ticket fee to Banker
-        System.out.println(" Player paid " + ticketPrice + " at station ");
+        if (playerBalance >= ticketPrice) {
+            payBanker(ticketPrice);  // player then pays ticket fee to Banker
+            System.out.println(" Player paid " + ticketPrice + " at station ");
+        } else if (playerBalance < ticketPrice) {
+            System.out.println("You don't have enough money to pay ticket");
+
+
+        }
     }
 
 
@@ -162,10 +179,12 @@ public class Player {
         if (rollValue1 == rollValue2) {
             taxprice = (int) ((playerBalance * 0.1) / 2);
             payBanker(taxprice);
+            System.out.println("Player paid tax to office");
 
         } else {
             taxprice = (int) (playerBalance * 0.1);
             payBanker(taxprice);
+            System.out.println("Player paid tax to office");
         }
 
 
