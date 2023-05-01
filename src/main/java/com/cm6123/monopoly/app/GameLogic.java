@@ -46,13 +46,13 @@ public interface GameLogic {
     /**
      * method for asking player 1s name.
      */
-     void Askplayer1sName();
+     void askPlayer1sName();
 
     /**
      * method for asking player 2s name.
      */
 
-    void Askplayer2sName();
+    void askPlayer2sName();
 
 
     /**

@@ -71,7 +71,7 @@ public class GameLogicHandlers implements GameLogic {
 
 
     @Override
-    public void Askplayer1sName() {
+    public void askPlayer1sName() {
         Scanner scanner = new Scanner(System.in);
         String player1name = "";
         boolean blankname = false;
@@ -101,7 +101,7 @@ public class GameLogicHandlers implements GameLogic {
      */
 
     @Override
-    public void Askplayer2sName() {
+    public void askPlayer2sName() {
         Scanner scanner = new Scanner(System.in);
         String player1name = "";
         boolean blankname = false;

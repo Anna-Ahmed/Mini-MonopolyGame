@@ -314,8 +314,8 @@ public class MonopolyBoard {
         Properties oldkent = new Properties();
 
 
-        logic.Askplayer1sName();
-        logic.Askplayer2sName();
+        logic.askPlayer1sName();
+        logic.askPlayer2sName();
         while (true) {
 
 
