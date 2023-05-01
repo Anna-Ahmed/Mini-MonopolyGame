@@ -264,37 +264,6 @@ public class MonopolyBoardTest {
     }
 
 
-    @Test
-    public void playerPayRentOnOldKent(){
-        MonopolyBoard board = new MonopolyBoard();
-        PropertiesAndRent oldkent = new PropertiesAndRent();
-        Player player = board.getPlayer1();
-
-
-
-
-
-
-        //Given players postion is 3 (old kent on board)
-        player.setPlayerPosition(3);
-
-        //When player pays rent on old kent
-        oldkent.payOldKentRent(player);
-
-
-
-
-        //then player wills balance will update with rent price reducted from balance;
-        int currentPlayerBalance = player.getPlayerBalance();
-        double expectedPlayerBalance = currentPlayerBalance;
-
-
-
-        assertEquals(expectedPlayerBalance, player.getPlayerBalance());
-
-
-
-    }
 
 
     @Test
@@ -331,38 +300,6 @@ public class MonopolyBoardTest {
 
     }
 
-
-    @Test
-    public void player2PayRentOnOldKent(){
-        MonopolyBoard board = new MonopolyBoard();
-        PropertiesAndRent oldkent = new PropertiesAndRent();
-        Player player = board.getPlayer2();
-
-
-
-
-
-
-        //Given players postion is 3 (old kent on board)
-        player.setPlayerPosition(3);
-
-        //When player pays rent on old kent
-        oldkent.payOldKentRent(player);
-
-
-
-
-        //then player wills balance will update with rent price reducted from balance;
-        int currentPlayerBalance = player.getPlayerBalance();
-        double expectedPlayerBalance = currentPlayerBalance;
-
-
-
-        assertEquals(expectedPlayerBalance, player.getPlayerBalance());
-
-
-
-    }
 
 
     @Test
@@ -434,73 +371,6 @@ public class MonopolyBoardTest {
     }
 
 
-    @Test
-    public void playerPaysTheStrandRent(){
-        MonopolyBoard board = new MonopolyBoard();
-        PropertiesAndRent thestrand = new PropertiesAndRent();
-        Player player = board.getPlayer1();
-
-
-
-
-
-
-        //Given players postion 8 (the strand) on the board
-        player.setPlayerPosition(8);
-
-        //when player buysoldkent
-        thestrand.payTheStrandRent(player);;
-
-
-
-
-
-        //Then players balacne will be updated with the price of pall mall reducted from balance;
-
-        int currentPlayerBalance = player.getPlayerBalance();
-        double expectedPlayerBalance = currentPlayerBalance ;
-
-
-
-        assertEquals(expectedPlayerBalance, player.getPlayerBalance());
-
-
-
-    }
-
-    @Test
-    public void playerPaysPallMallRent(){
-        MonopolyBoard board = new MonopolyBoard();
-        PropertiesAndRent pallmall = new PropertiesAndRent();
-        Player player = board.getPlayer1();
-
-
-
-
-
-
-        //Given players postion 4 (pall mall) on the board
-        player.setPlayerPosition(4);
-
-        //when player buysoldkent
-        pallmall.buyPallMall(player);
-
-
-
-
-
-        //Then players balacne will be updated with the price of pall mall reducted from balance;
-
-        int currentPlayerBalance = player.getPlayerBalance();
-        double expectedPlayerBalance = currentPlayerBalance ;
-
-
-
-        assertEquals(expectedPlayerBalance, player.getPlayerBalance());
-
-
-
-    }
 
 
     @Test
@@ -538,39 +408,7 @@ public class MonopolyBoardTest {
     }
 
 
-    @Test
-    public void playerPaysLeicesterRent(){
-        MonopolyBoard board = new MonopolyBoard();
-        PropertiesAndRent ls = new PropertiesAndRent();
-        Player player = board.getPlayer1();
 
-
-
-
-
-
-        //Given players postion 12(leicester square) on the board
-        player.setPlayerPosition(12);
-
-        //when player buysoldkent
-        ls.payLeicesterSquareRent(player);
-
-
-
-
-
-        //Then players balacne will be updated with the price of pall mall reducted from balance;
-
-        int currentPlayerBalance = player.getPlayerBalance();
-        double expectedPlayerBalance = currentPlayerBalance ;
-
-
-
-        assertEquals(expectedPlayerBalance, player.getPlayerBalance());
-
-
-
-    }
 
 
     @Test
@@ -607,39 +445,6 @@ public class MonopolyBoardTest {
 
     }
 
-    @Test
-    public void playerPaysParkLaneRent(){
-        MonopolyBoard board = new MonopolyBoard();
-        PropertiesAndRent pl = new PropertiesAndRent();
-        Player player = board.getPlayer1();
-
-
-
-
-
-
-        //Given players postion 14 (park lane) on the board
-        player.setPlayerPosition(14);
-
-        //when player  pays rent on parklane
-        pl.payParkLaneRent(player);
-
-
-
-
-
-        //Then players balance will be updated with the price of pall mall reducted from balance;
-
-        int currentPlayerBalance = player.getPlayerBalance();
-        double expectedPlayerBalance = currentPlayerBalance ;
-
-
-
-        assertEquals(expectedPlayerBalance, player.getPlayerBalance());
-
-
-
-    }
 
 
 

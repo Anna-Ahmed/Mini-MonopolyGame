@@ -283,14 +283,14 @@ public class MonopolyBoard {
                 space.space2();
                 PropertiesAndRent oldkent = new PropertiesAndRent();
                 oldkent.buyOldKent(player);
-                oldkent.payOldKentRent(player);
+
 
                 break;
             case PALL_MALL:
                 space.space3();
                 PropertiesAndRent pallmall = new PropertiesAndRent();
                 pallmall.buyPallMall(player);
-                pallmall.payPallMallRent(player);
+
                 break;
             case PADDIGTON:
                 space.space4();
@@ -300,7 +300,7 @@ public class MonopolyBoard {
                 space.space5();
                 PropertiesAndRent thestrand =new PropertiesAndRent();
                 thestrand.buyTheStrand(player);
-                thestrand.payTheStrandRent(player);
+
 
                 break;
             case TAX_OFFICE:
@@ -316,13 +316,11 @@ public class MonopolyBoard {
                 space.space8();
                 PropertiesAndRent ls = new PropertiesAndRent();
                 ls.buyLeicesterSquare(player);
-                ls.payLeicesterSquareRent(player);
                 break;
             case PARK_LANE:
                 space.space9();
                 PropertiesAndRent parklane = new PropertiesAndRent();
                 parklane.buyParkLane(player);
-                parklane.payParkLaneRent(player);
                 break;
             default:
                 space.space10();
