@@ -14,7 +14,6 @@ public class MonopolyBoard {
 
     /**
      * creating the board for the monopoly game.
-     * <p>
      * boardsize is the size of the monopoly game.
      */
     private int boardsize = 16;
@@ -49,7 +48,7 @@ public class MonopolyBoard {
 
 
     /**
-     * roll is used to stored an integer for dice roll value.
+     * roll is used to store an integer for dice roll value.
      */
 
 
@@ -80,7 +79,7 @@ public class MonopolyBoard {
         HOME, ROAD, OLD_KENT_ROAD, PALL_MALL, PADDIGTON, THE_STRAND, TAX_OFFICE, WATERLOO, LEICESTER_SQUARE, PARK_LANE;
 
         /**
-         * using Player class to create a owner object.
+         * using Player class to create an owner object.
          */
         private Player owner;
 

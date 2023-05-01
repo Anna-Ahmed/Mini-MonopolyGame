@@ -37,7 +37,7 @@ package com.cm6123.monopoly.game;
 
         public void payPlayer(final int amount){
                 bankerbalance -= amount;
-                System.out.println("Player given" + amount);
+                System.out.println("Player is paid £" + amount);
                 //player.receiveMoneyFromBanker(amount);
 
         }
@@ -51,7 +51,6 @@ package com.cm6123.monopoly.game;
                 bankerbalance += amount;
 
                 System.out.println("Received" + amount + "From Player");
-                //player.payBanker(amount);
         }
 }
 

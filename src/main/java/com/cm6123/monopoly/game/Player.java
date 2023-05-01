@@ -163,7 +163,7 @@ public class Player {
         ticketPrice = 10 * (rollValue1 + rollValue2);  //Ticket fee is 10 * the value of last roll
         if (playerBalance >= ticketPrice) {
             payBanker(ticketPrice);  // player then pays ticket fee to Banker
-            System.out.println(" Player paid " + ticketPrice + " at station ");
+            System.out.println(" Player paid £" + ticketPrice + " at station ");
         } else if (playerBalance < ticketPrice) {
             System.out.println("You don't have enough money to pay ticket");
 

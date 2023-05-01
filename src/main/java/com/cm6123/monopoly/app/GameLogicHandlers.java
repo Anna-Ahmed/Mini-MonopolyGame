@@ -2,12 +2,10 @@ package com.cm6123.monopoly.app;
 
 
 import com.cm6123.monopoly.game.MonopolyBoard;
-import com.cm6123.monopoly.game.Properties;
 
 import java.util.Scanner;
 
 public class GameLogicHandlers implements GameLogic {
-
 
 
     /**
@@ -32,7 +30,12 @@ public class GameLogicHandlers implements GameLogic {
         Scanner sc = new Scanner(System.in);
         System.out.println("          ");
         System.out.println("Player 2s Turn: Press enter to roll the dice");
-        sc.nextLine();
+        String userinput = sc.nextLine();
+
+        if (userinput.isEmpty() || !userinput.equals("/n")) {
+            System.out.println("You didnt press enter. " + " Please press enter to roll dice");
+
+        }
 
 
     }
@@ -45,22 +48,22 @@ public class GameLogicHandlers implements GameLogic {
     @Override
     public void ask() {
         int currentPosition = PLAYER.getPlayerPosition();
-     MonopolyBoard.BoardSpace currentSpace = BOARD.getSpaces()[currentPosition];
-if(currentSpace.getOwner() == null) {
-    Scanner sc = new Scanner(System.in);
-    System.out.println("Do you want to buy Old Kent? : Y/N");
-    String input = sc.nextLine();
+        MonopolyBoard.BoardSpace currentSpace = BOARD.getSpaces()[currentPosition];
+        if (currentSpace.getOwner() == null) {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Do you want to buy Old Kent? : Y/N");
+            String input = sc.nextLine();
 
-        if (input.equals("Y")) {
-            currentSpace.setOwner(PLAYER);
-        } else if (input.equals("Y") && PLAYER.getPlayerBalance() < 60) {
-            System.out.print("You dont have enough to purchase this property");
-        } else if (input.equals("N")) {
-            currentSpace.setOwner(null);
-            System.out.println("You chose not to buy this property");
+            if (input.equals("Y")) {
+                currentSpace.setOwner(PLAYER);
+            } else if (input.equals("Y") && PLAYER.getPlayerBalance() < 60) {
+                System.out.print("You dont have enough to purchase this property");
+            } else if (input.equals("N")) {
+                currentSpace.setOwner(null);
+                System.out.println("You chose not to buy this property");
+            }
         }
     }
-}
 
     /**
      * Asks player 1 to enter their name.
@@ -70,12 +73,29 @@ if(currentSpace.getOwner() == null) {
     @Override
     public void player1Name() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Player 1 : Enter you name");
-        String player1name = scanner.nextLine();
-        System.out.println(player1name + "is Player 1");
+        String player1name = "";
+        boolean blankname = false;
 
 
+        while (!blankname) {
+            System.out.println("Player 1 : Enter your name");
+            player1name = scanner.nextLine();
+            if (player1name.isEmpty()) {
+                System.out.println("Player name cannot be empty. Please enter  your name. ");
+            } else {
+                blankname = true;
+
+            }
+        }
+        System.out.println(player1name + " is Player 1");
     }
+
+
+
+
+
+
+
     /**
      * Asks player 2 to enter their name.
      */
@@ -83,11 +103,26 @@ if(currentSpace.getOwner() == null) {
     @Override
     public void player2Name() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Player 2 : Enter you name");
-        String player2name = scanner.nextLine();
-        System.out.println(player2name + "is Player 2");
+        String player1name = "";
+        boolean blankname = false;
 
+
+        while (!blankname) {
+            System.out.println("Player 2 : Enter your name");
+            player1name = scanner.nextLine();
+            if (player1name.isEmpty()) {
+                System.out.println("Player name cannot be empty. Please enter  your name. ");
+            } else {
+                blankname = true;
+
+            }
+
+
+
+        }
+        System.out.println(player1name + " is Player 2");
     }
+
 
 
     /**

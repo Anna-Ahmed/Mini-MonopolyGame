@@ -242,7 +242,7 @@ public class MonopolyBoardTest {
         oldkent.buyOldKent(player);
 
 
-        //Then players balacne will be updated with the price of old kent reducted from balance;
+        //Then players balance will be updated with the price of old kent reducted from balance;
 
         int currentPlayerBalance = player.getPlayerBalance();
         double expectedPlayerBalance = currentPlayerBalance;
@@ -268,7 +268,7 @@ public class MonopolyBoardTest {
         oldkent.buyOldKent(player);
 
 
-        //Then players balacne will be updated with the price of old kent reducted from balance;
+        //Then players balance will be updated with the price of old kent reducted from balance;
 
         int currentPlayerBalance = player.getPlayerBalance();
         double expectedPlayerBalance = currentPlayerBalance;
@@ -290,11 +290,11 @@ public class MonopolyBoardTest {
         //Given players postion 4 (pall mall) on the board
         player.setPlayerPosition(4);
 
-        //when player buysoldkent
+        //when player buys pall mall
         pallmall.buyPallMall(player);
 
 
-        //Then players balacne will be updated with the price of pall mall reducted from balance;
+        //Then players balance will be updated with the price of pall mall reducted from balance;
 
         int currentPlayerBalance = player.getPlayerBalance();
         double expectedPlayerBalance = currentPlayerBalance;
@@ -315,11 +315,11 @@ public class MonopolyBoardTest {
         //Given players postion 8 (the strand) on the board
         player.setPlayerPosition(8);
 
-        //when player buysoldkent
+        //when player buys the strand
         thestrand.buyTheStrand(player);
 
 
-        //Then players balacne will be updated with the price of pall mall reducted from balance;
+        //Then players balance will be updated with the price of the strand reducted from balance;
 
         int currentPlayerBalance = player.getPlayerBalance();
         double expectedPlayerBalance = currentPlayerBalance;
@@ -341,11 +341,11 @@ public class MonopolyBoardTest {
         //Given players postion 12 (leicester square) on the board
         player.setPlayerPosition(12);
 
-        //when player buysoldkent
+        //when player buys leicester square
         ls.buyLeicesterSquare(player);
 
 
-        //Then players balacne will be updated with the price of pall mall reducted from balance;
+        //Then players balance will be updated with the price of leicester square reducted from balance;
 
         int currentPlayerBalance = player.getPlayerBalance();
         double expectedPlayerBalance = currentPlayerBalance;
@@ -371,7 +371,7 @@ public class MonopolyBoardTest {
         pl.buyParkLane(player);
 
 
-        //Then players balacne will be updated with the price of pall mall reducted from balance;
+        //Then players balacne will be updated with the price of park lane reducted from balance;
 
         int currentPlayerBalance = player.getPlayerBalance();
         double expectedPlayerBalance = currentPlayerBalance;
@@ -390,7 +390,7 @@ public class MonopolyBoardTest {
         Player player = board.getPlayer1();
 
 
-        //Given players postion 12 (leicester square) on the board
+        //Given players postion 3 (old kent) on the board and balance is set to 30.
         player.setPlayerPosition(3);
         player.setPlayerBalance(30);
 
@@ -398,7 +398,7 @@ public class MonopolyBoardTest {
         oldkent.buyOldKent(player);
 
 
-        //Then players balacne will be updated with the price of pall mall reducted from balance;
+        //Then players balance will be updated and return that they don't have enough funds;
 
         int currentPlayerBalance = player.getPlayerBalance();
         double expectedPlayerBalance = currentPlayerBalance;
@@ -417,15 +417,15 @@ public class MonopolyBoardTest {
         Player player = board.getPlayer1();
 
 
-        //Given players postion 4 (pall mall) on the board
+        //Given players postion 4 (pall mall) on the board and balance is set to 60.
         player.setPlayerPosition(4);
         player.setPlayerBalance(60);
 
-        //when player buysoldkent
+        //when player buys pall mall.
         pm.buyPallMall(player);
 
 
-        //Then players balacne will be updated with the price of pall mall reducted from balance;
+        //Then players balance is checked and returns that player doesn't have enough funds to buy property.
 
         int currentPlayerBalance = player.getPlayerBalance();
         double expectedPlayerBalance = currentPlayerBalance;
@@ -443,15 +443,15 @@ public class MonopolyBoardTest {
         Player player = board.getPlayer1();
 
 
-        //Given players postion 12 (leicester square) on the board
+        //Given players postion 8 (the strand) on the board and players balance is 0
         player.setPlayerPosition(8);
-        player.setPlayerBalance(0);
+        player.setPlayerBalance(80);
 
-        //when player buysoldkent
+        //when player buys the strand
         ts.buyTheStrand(player);
 
 
-        //Then players balacne will be updated with the price of pall mall reducted from balance;
+        //Then players balance will be checked and return that they don't have enough funds
 
         int currentPlayerBalance = player.getPlayerBalance();
         double expectedPlayerBalance = currentPlayerBalance;
@@ -470,15 +470,15 @@ public class MonopolyBoardTest {
         Player player = board.getPlayer1();
 
 
-        //Given players postion 14 (park lane) on the board
+        //Given players postion 14 (park lane) on the board and balance is set to 120
         player.setPlayerPosition(14);
         player.setPlayerBalance(120);
 
-        //when player buysoldkent
+        //when player attempts buys park lan
         pl.buyParkLane(player);
 
 
-        //Then players balacne will be updated with the price of pall mall reducted from balance;
+        //Then players balance will be checked and return that they cannot buy property.
 
         int currentPlayerBalance = player.getPlayerBalance();
         double expectedPlayerBalance = currentPlayerBalance;
@@ -498,15 +498,15 @@ public class MonopolyBoardTest {
         Player player = board.getPlayer1();
 
 
-        //Given players postion 12 (leicester square) on the board
+        //Given players postion 12 (leicester square) on the board and balance is set to 0.
         player.setPlayerPosition(12);
-        player.setPlayerBalance(0);
+        player.setPlayerBalance(100);
 
-        //when player buysoldkent
+        //when player attemps to buy leicester square
         ls.buyLeicesterSquare(player);
 
 
-        //Then players balacne will be updated with the price of pall mall reducted from balance;
+        //Then players balance will be checked and return they don't have enough funds to buy property.
 
         int currentPlayerBalance = player.getPlayerBalance();
         double expectedPlayerBalance = currentPlayerBalance;
