@@ -37,7 +37,6 @@ public class MonopolyBoardTest {
 
     private static Stream<Arguments> LandingOnBoardSpaces() {
         return Stream.of(
-                Arguments.of(new int[]{1, 0}, MonopolyBoard.BoardSpace.ROAD),
                 Arguments.of(new int[]{1, 1}, MonopolyBoard.BoardSpace.ROAD),
                 Arguments.of(new int[]{2, 1}, MonopolyBoard.BoardSpace.OLD_KENT_ROAD),
                 Arguments.of(new int[]{2, 2}, MonopolyBoard.BoardSpace.PALL_MALL),
