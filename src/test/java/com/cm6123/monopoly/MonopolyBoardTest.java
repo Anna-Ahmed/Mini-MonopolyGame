@@ -78,7 +78,8 @@ public class MonopolyBoardTest {
                 Arguments.of(new int[]{1, 2}, MonopolyBoard.BoardSpace.ROAD),
                 Arguments.of(new int[]{3, 1}, MonopolyBoard.BoardSpace.PARK_LANE),
                 Arguments.of(new int[]{4, 2}, MonopolyBoard.BoardSpace.HOME),
-                Arguments.of(new int[]{3, 2}, MonopolyBoard.BoardSpace.ROAD)
+                Arguments.of(new int[]{3, 2}, MonopolyBoard.BoardSpace.ROAD),
+                Arguments.of(new int[]{4, 3}, MonopolyBoard.BoardSpace.ROAD)
 
 
         );
